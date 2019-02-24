@@ -14,3 +14,21 @@ class UserProfile(models.Model):
         return self.user.username
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=128, unique=True)
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.name
+
+
+class Movie(models.Model):
+    category = models.ForeignKey(Category)
+    title = models.CharField(max_length=128)
+    views = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.title
+
