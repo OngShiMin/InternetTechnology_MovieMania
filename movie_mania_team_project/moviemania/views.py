@@ -7,7 +7,9 @@ from django.contrib.auth import authenticate, login
 
 
 def index(request):
-    return HttpResponse("Rango says hey there partner")
+    response = render(request, 'moviemania/index.html')
+    return response
+
 
 
 class MovieManiaRegistrationView(RegistrationView):
