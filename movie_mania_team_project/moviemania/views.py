@@ -1,15 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from moviemania.forms import UserForm, UserProfileForm
+from moviemania.models import Category, Movie
 from registration.backends.simple.views import RegistrationView
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 
 
 def index(request):
-    response = render(request, 'moviemania/index.html')
+    category_list = Category.objects.order_by('-name')[:5]
+    context_dict = {'categories': category_list}
+    response = render(request, 'moviemania/index.html', context_dict)
     return response
-
 
 
 class MovieManiaRegistrationView(RegistrationView):
