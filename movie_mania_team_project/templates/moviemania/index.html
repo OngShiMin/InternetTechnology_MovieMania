@@ -1,20 +1,20 @@
 {% extends 'moviemania/base.html' %}
 {% load staticfiles %}
 {% block title_block %}
-    Index
+Index
 {% endblock %}
 
-{% block body_block %}
-    Hi there!
-        <div>
-        {% if categories %}
-        <ul>
-            {% for category in categories %}
-                <li>{{ category.name }}</li>
-            {% endfor %}
-        </ul>
-        {% else %}
-            <strong>There are no categories present.</strong>
-        {% endif %}
-        </div>
+{% block sidebar_block %}
+    <pre> Hi there! </pre>
+<div>
+    {% if categories %}
+    <ul>
+        {% for category in categories %}
+        <li style="color:#FFD700"><a href="/moviemania/category/{{ category.slug }}" style="color:red">{{ category.name }}</a></li><br/>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <strong>There are no categories present.</strong>
+    {% endif %}
+</div>
 {% endblock %}
