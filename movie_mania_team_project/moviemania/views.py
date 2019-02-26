@@ -1,10 +1,15 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from moviemania.forms import UserForm, UserProfileForm
-from moviemania.models import Category, Movie
+from moviemania.models import Category, Movie, UserProfile
 from registration.backends.simple.views import RegistrationView
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+from moviemania.webhose_search import run_query
+
 
 
 def index(request):
@@ -13,10 +18,6 @@ def index(request):
     response = render(request, 'moviemania/index.html', context_dict)
     return response
 
-
-class MovieManiaRegistrationView(RegistrationView):
-    def get_success_url(self, user):
-        return '/moviemania'
 
 def show_category(request, category_name_slug):
     # Create a context dictionary which we can pass
@@ -83,3 +84,65 @@ def register(request):
                        'profile_form': profile_form,
                        'registered': registered})
 
+
+def search(request):
+    result_list = []
+
+    if request.method == 'POST':
+        query = request.POST['query'].strip()
+        if query:
+            # Run the webhose search function to get the results list
+            result_list = run_query(query)
+
+    return render(request, 'moviemania/search.html', {'result_list': result_list})
+
+
+@login_required
+def register_profile(request):
+    form = UserProfileForm()
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            user_profile = form.save(commit=False)
+            user_profile.user = request.user
+            user_profile.save()
+
+            return redirect('index')
+        else:
+            print(form.errors)
+
+    context_dict = {'form': form}
+
+    return render(request, 'moviemania/profile_registration.html', context_dict)
+
+
+class MovieManiaRegistrationView(RegistrationView):
+    def get_success_url(self, user):
+        return reverse('register_profile')
+
+
+@login_required
+def profile(request, username):
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return redirect('index')
+
+    userprofile = UserProfile.objects.get_or_create(user=user)[0]
+    form = UserProfileForm({'website': userprofile.website, 'picture': userprofile.picture})
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES, instance=userprofile)
+        if form.is_valid():
+            form.save(commit=True)
+            return redirect('profile', user.username)
+        else:
+            print(form.errors)
+
+    return render(request, 'moviemania/profile.html', {'userprofile': userprofile, 'selecteduser': user, 'form': form })
+
+
+@login_required
+def list_profiles(request):
+    userprofile_list = UserProfile.objects.all()
+    return render(request, 'moviemania/list_profiles.html', {'userprofile_list': userprofile_list})
