@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+#from django.core.files.storage import FileSystemStorage
+
+#fs = FileSystemStorage(location='/media/posters')
 
 
 class UserProfile(models.Model):
@@ -36,12 +39,17 @@ class Movie(models.Model):
     category = models.ForeignKey(Category)
     title = models.CharField(max_length=128)
     views = models.IntegerField(default=0)
+
     slug = models.SlugField(blank=True)
 
     def save(self, *args, **kwargs):
         self.category.slug = slugify(self.category.name)
         self.slug = slugify(self.title)
         super(Movie, self).save(*args, **kwargs)
+
+#    img = models.ImageField(storage=fs)
+
+
 
     def __str__(self):
         return self.title

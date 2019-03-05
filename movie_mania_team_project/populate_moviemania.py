@@ -12,6 +12,7 @@ from moviemania.models import Category, Movie
 def populate():
     action_movies = [
         {"title": "Mission Impossible", "views": 32},
+        {"title": "Fantastic Beasts: The Crimes of Grindelwald", "views": 32},
         {"title": "Avengers: Infinity War", "views": 16}
     ]
 
@@ -19,9 +20,15 @@ def populate():
         {"title": "Bohemian Rhapsody", "views": 32},
         {"title": "Titanic", "views": 16}
     ]
+    
+    fantasy_movies = [
+        {"title": "Fantastic Beasts: The Crimes of Grindelwald", "views": 32},
+        {"title": "Avengers: Infinity War", "views": 16}
+    ]
 
     cats = {"Action": {"movies": action_movies, "views": 128, "likes": 64},
-            "Drama": {"movies": drama_movies, "views": 64, "likes": 32}}
+            "Drama": {"movies": drama_movies, "views": 64, "likes": 32},
+            "Fantasy": {"movies": fantasy_movies, "views": 132, "likes": 64}}
 
     for cat, cat_data in cats.items():
         c = add_cat(cat, cat_data["views"], cat_data["likes"])
@@ -33,7 +40,7 @@ def populate():
             print("- {0} - {1}".format(str(c), str(m)))
 
 
-def add_movie(cat, title, views=0):
+def add_movie(cat, title, views=0,):
     m = Movie.objects.get_or_create(category=cat, title=title)[0]
     m.views = views
     m.save()
