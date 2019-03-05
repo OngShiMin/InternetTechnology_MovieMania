@@ -8,9 +8,15 @@ from moviemania.models import Category, Movie
 class PageAdmin(admin.ModelAdmin):
     list_display = ('title', 'category', 'url')
 
+
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('name',)}
 
+
+class MovieAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug':('title',)}
+
+
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Movie)
+admin.site.register(Movie, MovieAdmin)
 admin.site.register(UserProfile)

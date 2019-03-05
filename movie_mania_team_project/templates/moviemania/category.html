@@ -11,7 +11,7 @@
         {% if movies %}
             <ul>
                 {% for movie in movies %}
-                    <li><a href="{{ movie.url }}">{{ movie.title }}</a></li>
+                    <li><a href="/moviemania/category/{{ category.slug }}/{{ movie.slug }}">{{ movie.title }}</a></li>
                 {% endfor %}
              </ul>
         {% else %}

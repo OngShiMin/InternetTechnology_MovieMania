@@ -1,0 +1,11 @@
+
+
+<ul>
+    {% if movies %}
+        {% for m in movies %}
+            <li><a href="/moviemania/category/{{ m.category.slug }}/{{ m.slug }}">{{ m.title }}</a></li>
+        {% endfor %}
+    {% else %}
+        <li><strong>There are no movies present</strong></li>
+    {% endif %}
+</ul>

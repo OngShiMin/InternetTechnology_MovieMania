@@ -42,9 +42,21 @@ def show_category(request, category_name_slug):
         # Don't do anything -
         # the template will display the "no category" message for us.
         context_dict['category'] = None
-        context_dict['pages'] = None
+        context_dict['movies'] = None
         # Go render the response and return it to the client.
     return render(request, 'moviemania/category.html', context_dict)
+
+
+def show_movie(request, category_name_slug, movie_title_slug):
+    context_dict = {}
+    try:
+        movie = Movie.objects.get(slug=movie_title_slug)
+        context_dict['movie'] = movie
+    except Movie.DoesNotExist:
+        context_dict['movie'] = None
+        context_dict['category'] = None
+    return render(request, 'moviemania/movie.html', context_dict)
+
 
 def register(request):
     # Boolean is set to false initially
@@ -146,3 +158,31 @@ def profile(request, username):
 def list_profiles(request):
     userprofile_list = UserProfile.objects.all()
     return render(request, 'moviemania/list_profiles.html', {'userprofile_list': userprofile_list})
+
+
+def get_movie_list(max_results=0, starts_with=''):
+    movie_list = []
+    if starts_with:
+        movie_list = Movie.objects.filter(name__istartswith=starts_with)
+
+    if max_results > 0:
+        if len(movie_list) > max_results:
+            movie_list = movie_list[:max_results]
+    return movie_list
+
+
+def suggest_movie(request):
+    movie_list = []
+    starts_with = ''
+
+    if request.method == 'GET':
+        starts_with = request.GET['suggestion']
+    movie_list = get_movie_list(8, starts_with)
+
+    return render(request, 'moviemania/movies.html', {'movies': movie_list})
+
+
+
+
+
+
