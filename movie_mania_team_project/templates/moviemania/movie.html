@@ -1,11 +1,20 @@
 {% extends 'moviemania/base.html' %}
 {% load staticfiles %}
-
+{% load ratings %}
 
 
 {% block body_block %}
     <h1>{{ movie.title }}</h1>
     <br />
+{% ratings movie %}
+
+    <br />
+
+
+<br />
+
     This is useful information about the movie
 
 {% endblock %}
+
+

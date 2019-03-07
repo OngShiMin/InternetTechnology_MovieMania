@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+
 {% load moviemania_template_tags %}
 <html lang="en">
   <head>
@@ -75,14 +76,16 @@
 
           </div>
           {% block sidebar_block %}
-            {% get_movie_list %}
+
           {% endblock %}
-        </div>
+          </div>
         <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
           {% block body_block %}
           {% endblock %}
         </div>
       </div>
+
+
       <!--
           <h1>Dashboard</h1>
           <section class="row text-center placeholders">
@@ -125,6 +128,9 @@
     <script src="{% static "js/moviemania-ajax.js" %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Stylesheet for star ratings -->
+    <link rel="stylesheet" href="{% static 'star_ratings/css/star-ratings.css' %}">
+    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
   </body>
 </html>
 

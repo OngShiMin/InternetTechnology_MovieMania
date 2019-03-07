@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'moviemania',
     'registration',
+    'star_ratings',
 ]
 
 MIDDLEWARE = [
@@ -139,6 +140,16 @@ LOGIN_REDIRECT_URL = '/moviemania/'
 # The page users are directed to if they are not logged in,
 # and are trying to access pages requiring authentication
 LOGIN_URL = '/accounts/login/'
+
+# Variables for star ratings
+# Prohibit users from altering their ratings
+STAR_RATINGS_RERATE = False
+# Number of rating stars (default = 5)
+STAR_RATINGS_RANGE = 5
+# Enable anonymous ratings
+STAR_RATINGS_ANONYMOUS = False
+# Location of star sprite sheet
+STAR_RATINGS_STAR_SPRITE = '/star-ratings/images/stars.png'
 
 # Media Files
 MEDIA_ROOT = MEDIA_DIR
