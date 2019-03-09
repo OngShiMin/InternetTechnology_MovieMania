@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
-#from django.core.files.storage import FileSystemStorage
+from django.core.files.storage import FileSystemStorage
 
-#fs = FileSystemStorage(location='/media/posters')
+fs = FileSystemStorage(location='/media/posters')
 
 
 class UserProfile(models.Model):
@@ -20,8 +20,6 @@ class UserProfile(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=128, unique=True)
-    views = models.IntegerField(default=0)
-    likes = models.IntegerField(default=0)
     slug = models.SlugField(blank=True)
 
     def save(self, *args, **kwargs):
@@ -39,6 +37,11 @@ class Movie(models.Model):
     category = models.ForeignKey(Category)
     title = models.CharField(max_length=128)
     views = models.IntegerField(default=0)
+    img = models.ImageField(blank=True)
+    director = models.CharField(max_length=128, blank=True)
+    actor = models.CharField(max_length=128, blank=True)
+    content = models.TextField(blank=True)
+    
 
     slug = models.SlugField(blank=True)
 
@@ -47,10 +50,16 @@ class Movie(models.Model):
         self.slug = slugify(self.title)
         super(Movie, self).save(*args, **kwargs)
 
-#    img = models.ImageField(storage=fs)
-
-
 
     def __str__(self):
         return self.title
-
+ 
+    
+class Comments(models.Model):
+    comment_content = models.CharField(max_length=128)
+    score = models.IntegerField()
+    movie = models.ForeignKey(Movie)
+    user = models.ForeignKey(User)    
+    
+    def __str__(self):
+        return self.comment_content
