@@ -42,6 +42,7 @@ class Movie(models.Model):
     category = models.ForeignKey(Category)
     title = models.CharField(max_length=128)
     views = models.IntegerField(default=0)
+    likes = models.IntegerField(default=0)
     img = models.ImageField(blank=True)
     director = models.CharField(max_length=128, blank=True)
     actor = models.CharField(max_length=128, blank=True)

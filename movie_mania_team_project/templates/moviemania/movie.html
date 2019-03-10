@@ -5,12 +5,25 @@
 
 {% block body_block %}
     <h1>{{ movie.title }}</h1>
-    <br />
+
+
 {% ratings movie %}
 
 
     <br />
 
+<div>
+    <strong id="like_count">{{ movie.likes }}</strong> people have added this movie to their favourites
+    <br>
+    {% if user.is_authenticated %}
+        <button id="likes" data-movieid="{{movie.id}}"
+                class="btn btn-danger btn-sm" type="button">
+                Add to Favourites
+            </button>
+    {% endif %}
+</div>
+
+    <br />
 
 <br />
 

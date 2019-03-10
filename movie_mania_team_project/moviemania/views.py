@@ -59,6 +59,7 @@ def show_movie(request, category_name_slug, movie_title_slug):
     except Movie.DoesNotExist:
         context_dict['movie'] = None
         context_dict['category'] = None
+
     return render(request, 'moviemania/movie.html', context_dict)
 
 
@@ -186,7 +187,19 @@ def suggest_movie(request):
     return render(request, 'moviemania/movies.html', {'movies': movie_list})
 
 
-
+@login_required
+def like_movie(request):
+    movie_id = None
+    if request.method == 'GET':
+        movie_id = request.GET['movie_id']
+    likes = 0
+    if movie_id:
+        movie = Movie.objects.get(id=int(movie_id))
+        if movie:
+            likes = movie.likes + 1
+            movie.likes = likes
+            movie.save()
+    return HttpResponse(likes)
 
 
 
