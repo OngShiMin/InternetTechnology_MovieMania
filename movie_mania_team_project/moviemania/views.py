@@ -14,7 +14,7 @@ from moviemania.webhose_search import run_query
 
 def index(request):
     category_list = Category.objects.order_by('-name')[:5]
-    movie_list = Movie.objects.order_by('-views')[:5]
+    movie_list = Movie.objects.order_by('-likes')[:5]
 
 
     context_dict = {'categories': category_list, 'movies': movie_list}

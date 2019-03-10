@@ -5,6 +5,12 @@
 
 {% block body_block %}
     <h1>{{ movie.title }}</h1>
+<img src="{% static movie.image.url %}" />
+<img src="{{ MEDIA_URL}} {{ movie.title }}.jpg"/>
+<img src="{% static "posters/{{movie.title}}.jpg" %} />
+<img src="{{ u.movie.image.url }}"/>
+<img src="{{ movie.image }}"/>
+
 
 
 {% ratings movie %}
