@@ -3,8 +3,7 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
 #from django.core.files.storage import FileSystemStorage
-from django.contrib.contenttypes.fields import GenericRelation
-from star_ratings.models import Rating
+
 
 from django.core.files.storage import FileSystemStorage
 
@@ -48,24 +47,16 @@ class Movie(models.Model):
     actor = models.CharField(max_length=128, blank=True)
     content = models.TextField(blank=True)
     slug = models.SlugField(blank=True)
-    # rating = models.OneToOneField('star_ratings.Rating', on_delete=models.CASCADE)
-
 
     def save(self, *args, **kwargs):
         self.category.slug = slugify(self.category.name)
         self.slug = slugify(self.title)
         super(Movie, self).save(*args, **kwargs)
 
-
-    def getRating(self):
-        return self.rating.average
-
-
     def __str__(self):
         return self.title
 
 
-    
 class Comments(models.Model):
     comment_content = models.CharField(max_length=128)
     score = models.IntegerField()
