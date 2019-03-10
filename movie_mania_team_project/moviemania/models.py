@@ -1,11 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+
 #from django.core.files.storage import FileSystemStorage
 from django.contrib.contenttypes.fields import GenericRelation
 from star_ratings.models import Rating
 
-#fs = FileSystemStorage(location='/media/posters')
+from django.core.files.storage import FileSystemStorage
+
+
+fs = FileSystemStorage(location='/media/posters')
 
 
 class UserProfile(models.Model):
@@ -22,8 +26,6 @@ class UserProfile(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=128, unique=True)
-    views = models.IntegerField(default=0)
-    likes = models.IntegerField(default=0)
     slug = models.SlugField(blank=True)
 
     def save(self, *args, **kwargs):
@@ -41,30 +43,35 @@ class Movie(models.Model):
     category = models.ForeignKey(Category)
     title = models.CharField(max_length=128)
     views = models.IntegerField(default=0)
-    rating = models.ForeignKey('star_ratings.Rating')
-    average = getattr(Rating, 'average')
-    number = models.ForeignKey('star_ratings.Average')
+    img = models.ImageField(blank=True)
+    director = models.CharField(max_length=128, blank=True)
+    actor = models.CharField(max_length=128, blank=True)
+    content = models.TextField(blank=True)
     slug = models.SlugField(blank=True)
+    # rating = models.OneToOneField('star_ratings.Rating', on_delete=models.CASCADE)
+
 
     def save(self, *args, **kwargs):
         self.category.slug = slugify(self.category.name)
         self.slug = slugify(self.title)
-        if not self.rating:
-            self.rating = star_ratings.Rating.average.objects.create()
-        self.average = getattr(Rating, 'average')
         super(Movie, self).save(*args, **kwargs)
 
-#    img = models.ImageField(storage=fs)
 
+    def getRating(self):
+        return self.rating.average
 
 
     def __str__(self):
         return self.title
 
 
-# This is for the ordering of the ratings
-#class Order(models.Model):
- #   bar = models.CharField(max_length=100)
-  #  ratings = GenericRelation(Rating, related_query_name='orders')
-
+    
+class Comments(models.Model):
+    comment_content = models.CharField(max_length=128)
+    score = models.IntegerField()
+    movie = models.ForeignKey(Movie)
+    user = models.ForeignKey(User)    
+    
+    def __str__(self):
+        return self.comment_content
 
