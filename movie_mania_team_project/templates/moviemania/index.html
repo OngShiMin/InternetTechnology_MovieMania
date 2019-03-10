@@ -1,5 +1,6 @@
 {% extends 'moviemania/base.html' %}
 {% load staticfiles %}
+{% load moviemania_template_tags %}
 {% block title_block %}
 Index
 {% endblock %}
@@ -21,9 +22,14 @@ Index
 
 <!-- Top Movies -->
 {% block body_block %}
+
+
 <div class="container">
 <h3 class="my-4">Top Movies</h3>
     {% if movies %}
+
+
+
     <div class="row">
         <div class="col-md-3 col-sm-6 mb-4">
         <a href="#">

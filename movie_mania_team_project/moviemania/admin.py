@@ -20,3 +20,4 @@ class MovieAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Movie, MovieAdmin)
 admin.site.register(UserProfile)
+

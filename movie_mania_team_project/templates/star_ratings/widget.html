@@ -31,7 +31,7 @@
                             {% csrf_token %}
                             <input type="hidden" value="{{ star }}" name="score">
                             <input type="hidden" value="{{ request.path }}" name="next">
-                            <!-- the following if statement helps to colour the stars adequately --> 
+                            <!-- the following if statement helps to colour the stars adequately -->
                             {% if rating.average > forloop.counter0 %}
                                  <button type="submit" class="star-ratings-rating-full" data-score="{{ star }}"></button>
                             {% else %}
