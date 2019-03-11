@@ -7,11 +7,11 @@
 
 {% block body_block %}
     {% if category %}
-        <h1>{{ category.name }}</h1>
+        <h1  class=" font-weight-bold text-white ">{{ category.name }}</h1>
         {% if movies %}
             <ul>
                 {% for movie in movies %}
-                    <li><a href="/moviemania/category/{{ category.slug }}/{{ movie.slug }}">{{ movie.title }}</a></li>
+                <a class="nav-link  text-white" href="/moviemania/category/{{ category.slug }}/{{ movie.slug }}">{{ movie.title }}</a><br/>
                 {% endfor %}
              </ul>
         {% else %}

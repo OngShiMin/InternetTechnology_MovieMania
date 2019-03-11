@@ -4,21 +4,55 @@
 
 
 {% block body_block %}
-    <h1>{{ movie.title }}</h1>
-<img src="{% static movie.image.url %}" />
-<img src="{{ MEDIA_URL}} {{ movie.title }}.jpg"/>
-<img src="{% static "posters/{{movie.title}}.jpg" %} />
-<img src="{{ u.movie.image.url }}"/>
-<img src="{{ movie.image }}"/>
-
-
-
-{% ratings movie %}
-
-
     <br />
-
-<div>
+<!--This is the style of a movie-->
+<div class="row">
+    <div class="w-100" id="movietitle"><h2 href="" class="w-100 text-white font-weight-bold font-italic text-warning " >{{ movie.title }}</h2></div>
+    
+    <div class="w-25  ">
+        <div class="w-100 " id="movieimg"><img src="{% static movie.image.url %}" class="w-100"/></div>
+        <div class="w-100 " id="movieimg"><img src="{{ MEDIA_URL}} {{ movie.title }}.jpg" class="w-100"/></div>
+        <div class="w-100 " id="movieimg"><img src="{% static "posters/{{movie.title}}.jpg" %} class="w-100"/></div>
+        <div class="w-100 " id="movieimg"><img src="{{ u.movie.image.url }}" class="w-100"/></div>
+        <div class="w-100 " id="movieimg"><img src="{{ movie.image }}" class="w-100"/></div>
+        
+        <div class="w-100 " id="preview"><a href="#" class="w-100  font-weight-bold text-white">Watch Preview</a></div>
+        <div class="w-100 " id="stream"><a href="#" class="w-100  font-weight-bold text-white" >Stream Online</a></div>
+        
+        <div class="w-100 " id="stars">
+    <!--need to edit-->
+        <i class='fas fa-star text-warning' style='font-size:16px'></i>
+        <i class='fas fa-star text-warning' style='font-size:16px'></i>
+        <i class='fas fa-star text-warning' style='font-size:16px'></i>
+        <i class='fas fa-star text-warning' style='font-size:16px'></i>
+        <i class='fas fa-star text-warning' style='font-size:16px'>5.0</i>
+        <p class="font-weight-bold text-white "> {% ratings movie %}</p>
+        </div>
+    <br />
+    </div>
+    
+    <div class="w-70">
+        <div class="w-100" >
+            <h3 href="" class="w-100  font-weight-bold text-muted " >Summary</h3>
+            <div class="w=100" id="summary"><p class="w-100  font-weight-bold text-white ">This is a test</p></div>
+        </div>
+        <div class="w-100">
+            <p class="w-100 text-white">Directed by: XXX(need to edit)</p>
+        </div>
+        <div class="w-100" >
+            <h3  class=" font-weight-bold text-muted " >Casts </h3>
+            <p class="font-weight-bold text-white ">This is a test </p>
+        </div>
+        <div class="w-100 form-group" id="reviews" >
+        </div>
+        <span class="w-100 bg-light border border-warning" style="width:100px;height: 50px" >
+            <i class='w-20 fas fa-user text-white' style='font-size:16px'> Username</i>
+            <p class="w-100 text-white">Comment content</p>
+        </span>
+    </div>
+</div>
+<!--movie style end-->
+<br />
     <strong id="like_count">{{ movie.likes }}</strong> people have added this movie to their favourites
     <br>
     {% if user.is_authenticated %}
@@ -29,11 +63,9 @@
     {% endif %}
 </div>
 
-    <br />
 
 <br />
 
-    This is useful information about the movie
 
 {% endblock %}
 

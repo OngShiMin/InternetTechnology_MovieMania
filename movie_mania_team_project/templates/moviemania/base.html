@@ -18,20 +18,28 @@
 
     <!-- Custom styles for this template -->
     <link href="http://v4-alpha.getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+    <!-- for stat icon-->
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <!--for js code in movie.html-->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   </head>
 
-  <body>
+  <body style="background: url('/static/images/index.jpg'); background-size: 100% ">
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
       <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="{% url 'index' %}">Movie Mania</a>
+      <!--webApp icon-->  
+      <a class="navbar-brand" href="{% url 'index' %}"><img src="/static/images/title.jpg" style="height: 60px;width: 150px">
+      <!--<a class="navbar-brand" href="{% url 'index' %}">Movie Mania</a>-->
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
           </li>
+          
           {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'auth_logout' %}?next=/moviemania/">Log out</a>
@@ -50,7 +58,22 @@
             <a class="nav-link" href="{% url 'registration_register' %}">Sign up</a>
           </li>
           {% endif %}
+          
+          <!--drop down navigation for categories-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
+                <div class="dropdown-menu">
+                {% get_category_list %}
+                <ul>
+                {% for category in categories %}
+                    <a class="dropdown-item" href="/moviemania/category/{{ category.slug }}">{{ category.name }}</a>
+                {% endfor %}
+                </ul>
+            </div>
+          </li>
         </ul>
+        
+        <!--search bar-->
         <form class="form-inline mt-2 mt-md-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search">
           <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
@@ -58,34 +81,36 @@
       </div>
     </nav>
 
+<!--
+    <div class="container-fluid bg-transparent " >
+    <div class="row bg-transparent">
+    <div class="col-sm-3 col-md-2 hidden-xs-down sidebar bg-transparent">
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+      <ul class="nav nav-list flex-column">
+        <li class="nav-item">Type to find a movie</li>
+        <form>
+          <li class="nav-item"><input class="search-query form-control" type="text"
+              name="suggestion" value="" id="suggestion" />
+          </li>
+        </form>
+      </ul>
+      <hr>
 
-          <ul class="nav nav-list flex-column">
-            <li class="nav-item">Type to find a movie</li>
-            <form>
-              <li class="nav-item"><input class="search-query form-control" type="text"
-                  name="suggestion" value="" id="suggestion" />
-              </li>
-            </form>
-          </ul>
-          <hr>
-          <div id="movies">
-
-          </div>
-          {% block sidebar_block %}
-              <pre> Categories </pre>
-              {% get_category_list %}
-          {% endblock %}
-          </div>
-        <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-          {% block body_block %}
-          {% endblock %}
+      <div id="movies">
+      
+       </div>
+      {% block sidebar_block %}
+            <pre class="font-weight-bold  text-white"> Categories </pre>
+            {% get_category_list %}
+         {% endblock %}
+        </div>
+-->
+        <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3 bg-transparent">
+            {% block body_block %}
+            {% endblock %}
         </div>
       </div>
-
+</div>
 
       <!--
           <h1>Dashboard</h1>
@@ -114,7 +139,8 @@
         </div>
       </div> -->
     </div>
-
+    <!--Footer of the page-->
+    <footer><p>© 2019 - MovieMania</p></footer>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

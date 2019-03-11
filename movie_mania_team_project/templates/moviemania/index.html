@@ -5,31 +5,18 @@
 Index
 {% endblock %}
 
-{% block sidebar_block %}
-    <pre> Categories </pre>
-<div>
-    {% if categories %}
-    <ul>
-        {% for category in categories %}
-        <li style="color:#FFD700"><a href="/moviemania/category/{{ category.slug }}" style="color:red">{{ category.name }}</a></li><br/>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <strong>There are no categories present.</strong>
-    {% endif %}
-</div>
-{% endblock %}
 
-<!-- search bar -->
+<!-- Custom styles for this search bar -->
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"><script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 
 {% block body_block %}
 <!-- Search Bar -->
 <div class="container">
     <div id="custom-search-input">
          <div class="input-group col-md-12">
-             <input type="text" class="  search-query form-control" placeholder="Title, Year, Cast..." />
+             <input type="text" class="  search-query form-control" placeholder="Search Title, Year, Cast..." />
              <span class="input-group-btn">
                  <button class="btn btn-danger" type="button">
                      <span class=" glyphicon glyphicon-search"></span>
@@ -37,61 +24,28 @@ Index
               </span>
          </div>
      </div>
+</div>
 
+   
 <!-- Top Movies -->
 <h3 class="my-4">Top Movies</h3>
 
+<div>
     {% if movies %}
-    <div class="row">
+        <div class="row">
         <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
+                    
+        {% for movie in movies %}
+            <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}">{{ movie.title }}</a>
+            <!--<img class="img-fluid" src="{{ movie.image.url }}">-->
+            <!--<img src="{% static movie.image.url %}" />-->
             <img class="img-fluid" src="http://placehold.it/200x300" alt=""/>
-        </a>
+        {% endfor %}
         </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-            <img class="img-fluid" src="http://placehold.it/200x300" alt=""/>
-        </a>
-        </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-            <img class="img-fluid" src="http://placehold.it/200x300" alt=""/>
-        </a>
-        </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-            <img class="img-fluid" src="http://placehold.it/200x300" alt=""/>
-        </a>
-        </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-            <img class="img-fluid" src="http://placehold.it/200x300" alt=""/>
-        </a>
-        </div>
-    </div>
+                
+        {% else %}
+            <strong>There are no movies present.</strong>
     {% endif %}
-
-
-      </div>
-            <div>
-                <h3>Most Liked Movies</h3>
-                {% if movies %}
-                     <ul>
-                 {% for movie in movies %}
-                 <li>
-                     <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}">{{ movie.title }}</a>
-                      <img src="{{ movie.image.url }}">
-                     <img src="{% static movie.image.url %}" />
-                 </li>
-                 {% endfor %}
-                    </ul>
-                {% else %}
-                    <strong>There are no movies present.</strong>
-                {% endif %}
         </div>
 </div>
 {% endblock %}
