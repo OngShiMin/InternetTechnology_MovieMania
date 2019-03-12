@@ -18,20 +18,30 @@
 
     <!-- Custom styles for this template -->
     <link href="http://v4-alpha.getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+    <!-- for stat icon-->
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <!--for js code in movie.html-->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   </head>
 
-  <body>
+<!--BACKGROUND-->
+  <body style="background: url('/static/images/movietheatre.jpg'); background-size: 100% ">
+  
+<!--NAVIGATION BAR-->  
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
       <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="{% url 'index' %}">Movie Mania</a>
+      <!--webApp icon-->  
+      <a class="navbar-brand" href="{% url 'index' %}"><img src="/static/images/title.jpg" style="height: 60px;width: 150px">
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
           </li>
+          
           {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'auth_logout' %}?next=/moviemania/">Log out</a>
@@ -53,7 +63,22 @@
             <a class="nav-link" href="{% url 'auth_password_reset' %}">Forget Password??</a>
           </li>
           {% endif %}
+          
+          <!--drop down navigation for categories-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
+                <div class="dropdown-menu">
+                {% get_category_list %}
+                <ul>
+                {% for category in categories %}
+                    <a class="dropdown-item" href="/moviemania/category/{{ category.slug }}">{{ category.name }}</a>
+                {% endfor %}
+                </ul>
+            </div>
+          </li>
         </ul>
+        
+        <!--SEARCH BAR-->
         <form class="form-inline mt-2 mt-md-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search">
           <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
@@ -61,34 +86,37 @@
       </div>
     </nav>
 
+<!--
+    <div class="container-fluid bg-transparent " >
+    <div class="row bg-transparent">
+    <div class="col-sm-3 col-md-2 hidden-xs-down sidebar bg-transparent">
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+      <ul class="nav nav-list flex-column">
+        <li class="nav-item">Type to find a movie</li>
+        <form>
+          <li class="nav-item"><input class="search-query form-control" type="text"
+              name="suggestion" value="" id="suggestion" />
+          </li>
+        </form>
+      </ul>
+      <hr>
 
-          <ul class="nav nav-list flex-column">
-            <li class="nav-item">Type to find a movie</li>
-            <form>
-              <li class="nav-item"><input class="search-query form-control" type="text"
-                  name="suggestion" value="" id="suggestion" />
-              </li>
-            </form>
-          </ul>
-          <hr>
-          <div id="movies">
+      <div id="movies">
+      
+       </div>
+      {% block sidebar_block %}
+            <pre class="font-weight-bold  text-white"> Categories </pre>
+            {% get_category_list %}
+         {% endblock %}
+        </div>
+-->
 
-          </div>
-          {% block sidebar_block %}
-              <pre> Categories </pre>
-              {% get_category_list %}
-          {% endblock %}
-          </div>
-        <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-          {% block body_block %}
-          {% endblock %}
+        <div class="col-sm-9 col-md-10 pt-3 bg-transparent">
+            {% block body_block %}
+            {% endblock %}
         </div>
       </div>
-
+</div>
 
       <!--
           <h1>Dashboard</h1>
@@ -117,6 +145,65 @@
         </div>
       </div> -->
     </div>
+    
+    
+<!-- FOOTER -->
+</br>
+<footer class="page-footer font-small blue pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase text-white">About MovieMania</h5>
+          <p class="text-muted">Movie Mania is a platform for movie maniacs to share their opinions on movies</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div align="right" class="col-md-6 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase text-white">Customer Service</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a class="text-muted" href="#!">Home Office: xxxxx</a>
+              </li>
+              <li>
+                <a class="text-muted" href="#!">Contact: xxxxx</a>
+              </li>
+              <li>
+                <a class="text-muted" href="#!">Email: xxxxx@moviemania.com</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center text-white py-3">
+        © 2019 Copyright: MovieMania
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -130,6 +217,7 @@
     <script src="{% static "js/moviemania-jquery.js" %}"></script>
     <script src="{% static "js/jquery.min.js" %}"></script>
     <script src="{% static "js/moviemania-ajax.js" %}"></script>
+    <script src="{% static "js/moviemania-review.js" %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
     <!-- Stylesheet for star ratings -->
