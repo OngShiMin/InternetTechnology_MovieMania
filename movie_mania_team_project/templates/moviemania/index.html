@@ -30,22 +30,20 @@ Index
 <!-- Top Movies -->
 <h3 class="my-4">Top Movies</h3>
 
-<div>
     {% if movies %}
         <div class="row">
-        <div class="col-md-3 col-sm-6 mb-4">
                     
         {% for movie in movies %}
-            <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}">{{ movie.title }}</a>
+        <div class="col-md-3 col-sm-6 mb-4">
             <!--<img class="img-fluid" src="{{ movie.image.url }}">-->
             <!--<img src="{% static movie.image.url %}" />-->
             <img class="img-fluid" src="http://placehold.it/200x300" alt=""/>
-        {% endfor %}
+            <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}">{{ movie.title }}</a>
         </div>
+        {% endfor %}
                 
         {% else %}
             <strong>There are no movies present.</strong>
     {% endif %}
         </div>
-</div>
 {% endblock %}
