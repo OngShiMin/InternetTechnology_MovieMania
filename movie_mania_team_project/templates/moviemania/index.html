@@ -13,7 +13,7 @@ Index
 
 {% block body_block %}
 <!-- Search Bar -->
-<div class="container-fluid">
+<div class="container-fluid mt-5 ml-5">
     <div id="custom-search-input">
          <div class="input-group col-md-12">
              <input type="text" class="  search-query form-control" placeholder="Search Title, Year, Cast..." />
@@ -29,11 +29,11 @@ Index
    
 <!-- Top Movies -->
 </br>
-<div class="container-fluid">
+<div class="container-fluid ml-5">
 <h3 class="font-weight-bold text-white ">Top Movies</h3>
 
     {% if movies %}
-        <div class="row w-80 col-centered">
+        <div class="row">
                     
         {% for movie in movies %}
         <div class="col-md">

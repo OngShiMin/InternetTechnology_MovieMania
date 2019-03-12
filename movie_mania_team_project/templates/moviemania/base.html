@@ -23,6 +23,11 @@
     <!--for js code in movie.html-->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+    <!--star rating-->
+  <link rel="stylesheet" href="jquery.rateyo.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
   </head>
 
 <!--BACKGROUND-->
@@ -84,30 +89,7 @@
       </div>
     </nav>
 
-<!--
-    <div class="container-fluid bg-transparent " >
-    <div class="row bg-transparent">
-    <div class="col-sm-3 col-md-2 hidden-xs-down sidebar bg-transparent">
 
-      <ul class="nav nav-list flex-column">
-        <li class="nav-item">Type to find a movie</li>
-        <form>
-          <li class="nav-item"><input class="search-query form-control" type="text"
-              name="suggestion" value="" id="suggestion" />
-          </li>
-        </form>
-      </ul>
-      <hr>
-
-      <div id="movies">
-      
-       </div>
-      {% block sidebar_block %}
-            <pre class="font-weight-bold  text-white"> Categories </pre>
-            {% get_category_list %}
-         {% endblock %}
-        </div>
--->
 
         <div class="col-sm-9 col-md-10 pt-3 bg-transparent">
             {% block body_block %}
@@ -221,6 +203,10 @@
     <!-- Stylesheet for star ratings -->
     <link rel="stylesheet" href="{% static 'star_ratings/css/star-ratings.css' %}">
     <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+    
+    <!--for star rating-->
+<script src="jquery.js"></script>
+<script src="{% static 'js/rateyo/jquery.rateyo.js' %}"></script>
   </body>
 </html>
 

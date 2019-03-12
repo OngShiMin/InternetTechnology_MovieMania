@@ -1,4 +1,4 @@
-
+//for submitting comments
 $("#reviews").submit(function(e) {
 
     e.preventDefault(); // avoid to execute the actual submit of the form.
@@ -13,6 +13,7 @@ $("#reviews").submit(function(e) {
         {
             console.log('Submission was successful.');
             alert("success");
+            $("#reviews").hide();
         },
         error: function (data) {
             console.log('An error occurred.');
@@ -21,13 +22,29 @@ $("#reviews").submit(function(e) {
     });
 });
 
-function loadComment() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("reviews").style.display="";
-        }
-    };
-    xhttp.open("GET", "/templates/moviemania/movie.html", true);
-     xhttp.send();
-}
+// load comment form by clicking on the comment button
+$("comment-btn").click(function(e){
+    $("#reviews").show();
+    e.preventDefault();
+ });
+ 
+ // star rating
+$(function () {
+
+    var $rateYo = $("#rateYo").rateYo();
+
+$("#getRating").click(function () {
+    starWidth: "20px";
+    /* get rating */
+    var rating = $rateYo.rateYo("rating");
+
+    window.alert("Its " + rating + " Yo!");
+});
+
+$("#setRating").click(function () {
+
+    /* set rating */
+    var rating = getRandomRating();
+    $rateYo.rateYo("rating", rating);
+});
+});
