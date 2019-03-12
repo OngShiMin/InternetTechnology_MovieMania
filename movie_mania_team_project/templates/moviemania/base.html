@@ -25,14 +25,16 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   </head>
 
+<!--BACKGROUND-->
   <body style="background: url('/static/images/movietheatre.jpg'); background-size: 100% ">
+  
+<!--NAVIGATION BAR-->  
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
       <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <!--webApp icon-->  
       <a class="navbar-brand" href="{% url 'index' %}"><img src="/static/images/title.jpg" style="height: 60px;width: 150px">
-      <!--<a class="navbar-brand" href="{% url 'index' %}">Movie Mania</a>-->
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
@@ -73,7 +75,7 @@
           </li>
         </ul>
         
-        <!--search bar-->
+        <!--SEARCH BAR-->
         <form class="form-inline mt-2 mt-md-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search">
           <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
@@ -140,8 +142,65 @@
         </div>
       </div> -->
     </div>
-    <!--Footer of the page-->
-    <footer><p>© 2019 - MovieMania</p></footer>
+    
+    
+<!-- FOOTER -->
+<footer class="page-footer font-small blue pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase text-white">About Movie Mania</h5>
+          <p class="text-muted">Movie Mania is a platform for movie maniacs to share their opinions on movies</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div align="right" class="col-md-6 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase text-white">Customer Service</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a class="text-muted" href="#!">Home Office: xxxxx</a>
+              </li>
+              <li>
+                <a class="text-muted" href="#!">Contact: xxxxx</a>
+              </li>
+              <li>
+                <a class="text-muted" href="#!">Email: xxxxx@moviemania.com</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center text-white py-3">
+        © 2019 Copyright: MovieMania
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
