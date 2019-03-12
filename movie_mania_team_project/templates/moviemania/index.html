@@ -13,7 +13,7 @@ Index
 
 {% block body_block %}
 <!-- Search Bar -->
-<div class="container">
+<div class="container-fluid">
     <div id="custom-search-input">
          <div class="input-group col-md-12">
              <input type="text" class="  search-query form-control" placeholder="Search Title, Year, Cast..." />
@@ -29,17 +29,19 @@ Index
    
 <!-- Top Movies -->
 </br>
-<h3 class=" font-weight-bold text-white ">Top Movies</h3>
+<div class="container-fluid">
+<h3 class="font-weight-bold text-white ">Top Movies</h3>
 
     {% if movies %}
-        <div class="row">
+        <div class="row w-80 col-centered">
                     
         {% for movie in movies %}
-        <div class="col-md-3 col-sm-6 mb-4">
+        <div class="col-md">
             <!--<img class="img-fluid" src="{{ movie.image.url }}">-->
             <!--<img src="{% static movie.image.url %}" />-->
             <img class="img-fluid" src="http://placehold.it/200x300" alt=""/>
-            <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}">{{ movie.title }}</a>
+            <a class="text-white" href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}">{{ movie.title }}</a>
+            
         </div>
         {% endfor %}
                 
@@ -47,4 +49,5 @@ Index
             <strong>There are no movies present.</strong>
     {% endif %}
         </div>
+</div>
 {% endblock %}
