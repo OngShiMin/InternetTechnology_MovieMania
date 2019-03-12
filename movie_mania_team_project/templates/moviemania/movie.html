@@ -43,7 +43,14 @@
             <h3  class=" font-weight-bold text-muted " >Casts </h3>
             <p class="font-weight-bold text-white ">This is a test </p>
         </div>
-        <div class="w-100 form-group" id="reviews" >
+        <div class="w-100 form-group"  >
+         <button id="comment-btn" onclick="loadComment()" class="btn btn-secondary " type="submit" value="Comment">Comment</button>
+            <form action=" " method="post" id="reviews" style="display: block;">
+                {% csrf_token %}
+                <label class="font-weight-bold text-white" for="reviewcontent">Enter comments: </label>
+                <textarea class="form-control" id="reviewcontent" rows="3"></textarea>
+                <input  class="btn btn-secondary btn-sm" type="submit" onclick="myFunction()" value="OK">
+             </form>
         </div>
         <span class="w-100 bg-light border border-warning" style="width:100px;height: 50px" >
             <i class='w-20 fas fa-user text-white' style='font-size:16px'> Username</i>
