@@ -63,12 +63,17 @@
     <strong id="like_count">{{ movie.likes }}</strong> people have added this movie to their favourites
     <br>
     {% if user.is_authenticated %}
+        {% if show_like_button %}
         <button id="likes" data-movieid="{{movie.id}}"
                 class="btn btn-danger btn-sm" type="button">
                 Add to Favourites
             </button>
+        {% endif %}
     {% endif %}
 </div>
+
+
+
 
 
 <br />

@@ -12,7 +12,6 @@ from moviemania.models import Category, Movie
 def populate():
     action_movies = [
         {"title": "Mission Impossible", "views": 32,"director":"Jack","actor":"Lily"},
-        {"title": "Fantastic Beasts: The Crimes of Grindelwald", "views": 32, "director":"Jack","actor":"Lily"},
         {"title": "Avengers: Infinity War", "views": 16, "director":"Jack","actor":"Lily"}
     ]
 
@@ -22,8 +21,7 @@ def populate():
     ]
     
     fantasy_movies = [
-        {"title": "Fantastic Beasts: The Crimes of Grindelwald", "views": 32,"director":"Jack","actor":"Lily"},
-        {"title": "Avengers: Infinity War", "views": 16,"director":"Jack","actor":"Lily"}
+        {"title": "Fantastic Beasts: The Crimes of Grindelwald", "views": 32,"director":"Jack","actor":"Lily"}
     ]
 
     cats = {"Action": {"movies": action_movies},
