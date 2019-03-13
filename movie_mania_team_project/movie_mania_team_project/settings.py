@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'registration',
     'star_ratings',
 ]
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -154,3 +155,10 @@ STAR_RATINGS_STAR_SPRITE = '/star-ratings/images/stars.png'
 # Media Files
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'testsite_app'
+EMAIL_HOST_PASSWORD = 'mys3cr3tp4ssw0rd'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'

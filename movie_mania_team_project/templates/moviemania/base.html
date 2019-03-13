@@ -23,16 +23,23 @@
     <!--for js code in movie.html-->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+    <!--star rating-->
+  <link rel="stylesheet" href="jquery.rateyo.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
   </head>
 
+<!--BACKGROUND-->
   <body style="background: url('/static/images/movietheatre.jpg'); background-size: 100% ">
+  
+<!--NAVIGATION BAR-->  
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
       <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <!--webApp icon-->  
       <a class="navbar-brand" href="{% url 'index' %}"><img src="/static/images/title.jpg" style="height: 60px;width: 150px">
-      <!--<a class="navbar-brand" href="{% url 'index' %}">Movie Mania</a>-->
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
@@ -57,6 +64,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'registration_register' %}">Sign up</a>
           </li>
+
           {% endif %}
           
           <!--drop down navigation for categories-->
@@ -73,7 +81,7 @@
           </li>
         </ul>
         
-        <!--search bar-->
+        <!--SEARCH BAR-->
         <form class="form-inline mt-2 mt-md-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search">
           <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
@@ -81,30 +89,7 @@
       </div>
     </nav>
 
-<!--
-    <div class="container-fluid bg-transparent " >
-    <div class="row bg-transparent">
-    <div class="col-sm-3 col-md-2 hidden-xs-down sidebar bg-transparent">
 
-      <ul class="nav nav-list flex-column">
-        <li class="nav-item">Type to find a movie</li>
-        <form>
-          <li class="nav-item"><input class="search-query form-control" type="text"
-              name="suggestion" value="" id="suggestion" />
-          </li>
-        </form>
-      </ul>
-      <hr>
-
-      <div id="movies">
-      
-       </div>
-      {% block sidebar_block %}
-            <pre class="font-weight-bold  text-white"> Categories </pre>
-            {% get_category_list %}
-         {% endblock %}
-        </div>
--->
 
         <div class="col-sm-9 col-md-10 pt-3 bg-transparent">
             {% block body_block %}
@@ -140,8 +125,66 @@
         </div>
       </div> -->
     </div>
-    <!--Footer of the page-->
-    <footer><p>© 2019 - MovieMania</p></footer>
+    
+    
+<!-- FOOTER -->
+</br>
+<footer class="page-footer font-small blue pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase text-white">About MovieMania</h5>
+          <p class="text-muted">Movie Mania is a platform for movie maniacs to share their opinions on movies</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div align="right" class="col-md-6 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase text-white">Customer Service</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a class="text-muted" href="#!">Home Office: xxxxx</a>
+              </li>
+              <li>
+                <a class="text-muted" href="#!">Contact: xxxxx</a>
+              </li>
+              <li>
+                <a class="text-muted" href="#!">Email: xxxxx@moviemania.com</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center text-white py-3">
+        © 2019 Copyright: MovieMania
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -160,6 +203,10 @@
     <!-- Stylesheet for star ratings -->
     <link rel="stylesheet" href="{% static 'star_ratings/css/star-ratings.css' %}">
     <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+    
+    <!--for star rating-->
+<script src="jquery.js"></script>
+<script src="{% static 'js/rateyo/jquery.rateyo.js' %}"></script>
   </body>
 </html>
 

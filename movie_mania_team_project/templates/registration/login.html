@@ -12,17 +12,22 @@
 
                     <div class="col-sm-9 col-md-9">
                         <div class="form-group">
-                            <i class="fa fa-user fa-lg">Username:</i>
+                            <i class="fa fa-user fa-lg text-white">Username:</i>
                             <input class="form-control required" type="text" placeholder="Username" id="username" name="username" autofocus="autofocus" maxlength="20"/>
                         </div>
                         <div class="form-group">
-                            <i class="fa fa-lock fa-lg">Password:</i>
+                            <i class="fa fa-lock fa-lg text-white">Password:</i>
                             <input class="form-control required" type="password" placeholder="Password" id="password" name="password" maxlength="8"/>
                         </div>
                         <div class="form-group ">
                             <div class="col-sm-6 col-md-6 "></div>
                             <div class="col-sm-2 col-md-2 ">
                             <button type="submit" class="btn btn-outline-secondary btn-sm" value="Log in" b>Login</button>
+                            </div>
+                             <div class="form-group ">
+                            <div class="col-sm-6 col-md-6 "></div>
+                            <div class="col-sm-2 col-md-2 ">
+                             <a class="nav-link" href="{% url 'auth_password_reset' %}">Forget Password??</a>
                             </div>
                         </div>
                     </div>
@@ -33,22 +38,9 @@
       <!--  <input type="submit" value="Log in" />-->
         <input type="hidden" name="next" value="{{ next }}" />
     </form>
-    <p>
+    <p class="text-muted">
         Not a member yet?
-        <a href=" {% url 'registration_register' %}">Register</a>
+        <a class="text-muted" href=" {% url 'registration_register' %}">Register</a>
     </p>
-    <button class="btn btn-primary"
-            onClick="alert('You clicked the button using JavaScript.');">
-            Click Me - I run JavaScript
-    </button>
 
-    <button class="btn btn-primary" id="about-btn">
-        Click Me - I'm JavaScript on Speed</button>
-
-    <p> This is a example</p>
-    <p>This is another example</p>
-
-    <p>This text is for a JQuery Example</p>
-
-    <div id="msg">Hello - I am here for a JQuery Example too</div>
 {% endblock %}

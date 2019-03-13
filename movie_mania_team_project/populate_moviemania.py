@@ -16,10 +16,10 @@ def populate():
     ]
 
     drama_movies = [
-        {"title": "Bohemian Rhapsody", "views": 32, "director":"Jack","actor":"Lily"},
-        {"title": "Titanic", "views": 16, "director":"Jack","actor":"Lily"}
+        {"title": "Bohemian Rhapsody", "views": 32, "director": "Jack", "actor": "Lily"},
+        {"title": "Titanic", "views": 16, "director": "Jack", "actor": "Lily"}
     ]
-    
+
     fantasy_movies = [
         {"title": "Fantastic Beasts: The Crimes of Grindelwald", "views": 32,"director":"Jack","actor":"Lily"}
     ]
@@ -38,7 +38,7 @@ def populate():
             print("- {0} - {1}".format(str(c), str(m)))
 
 
-def add_movie(cat, title, views=0,):
+def add_movie(cat, title, views=0, ):
     m = Movie.objects.get_or_create(category=cat, title=title)[0]
     m.views = views
     m.save()
