@@ -13,22 +13,8 @@ Index
 
 {% block body_block %}
 <!-- Search Bar -->
-<div class="container-fluid mt-5 ml-5">
-    <div id="custom-search-input">
-         <div class="input-group col-md-12">
-             <input type="text" class="  search-query form-control" placeholder="Search Title, Year, Cast..." />
-             <span class="input-group-btn">
-                 <button class="btn btn-danger" type="button">
-                     <span class=" glyphicon glyphicon-search"></span>
-                 </button>
-              </span>
-         </div>
-     </div>
-</div>
-
-
 <form>
-     <li class="nav-item"><input class="search-query form-control" placeholder="Search for a movie" type="text"
+     <li class="nav-item container-fluid mt-5 ml-5"><input class="search-query form-control" placeholder="Search for a movie" type="text"
               name="suggestion" value="" id="suggestion" />
      </li>
 </form>
@@ -54,7 +40,6 @@ Index
             <!--<img src="{% static movie.image.url %}" />-->
             <img class="img-fluid" src="http://placehold.it/200x300" alt=""/>
             <a class="text-white" href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}">{{ movie.title }}</a>
-            
         </div>
         {% endfor %}
                 
