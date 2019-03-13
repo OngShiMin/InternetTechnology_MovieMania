@@ -11,12 +11,12 @@ $(document).ready(function() {
 
 
     $('#suggestion').keyup(function(){
-    var query;
-    query = $(this).val();
-    $.get('/moviemania/suggest_movie/', {suggestion: query}, function(data){
-        $('#movies').html(data);
+        var query;
+        query = $(this).val();
+        $.get('/moviemania/suggest_movie/', {suggestion: query}, function(data){
+            $('#movies').html(data);
+        });
     });
-});
 
 });
 

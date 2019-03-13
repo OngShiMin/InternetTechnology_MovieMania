@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
+
 #from django.core.files.storage import FileSystemStorage
 
 
@@ -10,17 +11,6 @@ from django.core.files.storage import FileSystemStorage
 
 fs = FileSystemStorage(location='/media/posters')
 
-
-class UserProfile(models.Model):
-    user = models.OneToOneField(User)
-
-    # The additional attributes we wish to include
-    website = models.URLField(blank=True)
-    picture = models.ImageField(upload_to='profile:images', blank=True)
-
-    # Override the __unicode__() method to return out something meaningful
-    def __str__(self):
-        return self.user.username
 
 
 class Category(models.Model):
@@ -56,6 +46,19 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+
+    # The additional attributes we wish to include
+    website = models.URLField(blank=True)
+    picture = models.ImageField(upload_to='profile:images', blank=True)
+    favorites = models.ManyToManyField(Movie)
+    # Override the __unicode__() method to return out something meaningful
+    def __str__(self):
+        return self.user.username
+
 
 
 class Comments(models.Model):

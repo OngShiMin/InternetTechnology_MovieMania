@@ -53,9 +53,19 @@ def show_category(request, category_name_slug):
 
 def show_movie(request, category_name_slug, movie_title_slug):
     context_dict = {}
+    context_dict['show_like_button'] = False
     try:
         movie = Movie.objects.get(slug=movie_title_slug)
         context_dict['movie'] = movie
+
+        if request.user.is_authenticated():
+            profile = UserProfile.objects.get(user=request.user)
+            favorites = profile.favorites.all()
+
+            if movie not in favorites:
+                context_dict['show_like_button'] = True
+
+
     except Movie.DoesNotExist:
         context_dict['movie'] = None
         context_dict['category'] = None
@@ -168,7 +178,7 @@ def list_profiles(request):
 def get_movie_list(max_results=0, starts_with=''):
     movie_list = []
     if starts_with:
-        movie_list = Movie.objects.filter(name__istartswith=starts_with)
+        movie_list = Movie.objects.filter(title__istartswith=starts_with)
 
     if max_results > 0:
         if len(movie_list) > max_results:
@@ -199,6 +209,12 @@ def like_movie(request):
             likes = movie.likes + 1
             movie.likes = likes
             movie.save()
+
+            # Get user details
+            user = request.user
+            profile = UserProfile.objects.get(user=user)
+            profile.favorites.add(movie)
+
     return HttpResponse(likes)
 
 
