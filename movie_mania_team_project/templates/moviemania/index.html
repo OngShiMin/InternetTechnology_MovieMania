@@ -13,9 +13,8 @@ Index
 
 {% block body_block %}
 <!-- Search Bar -->
-
 <form>
-     <li class="nav-item"><input class="search-query form-control" placeholder="Search for a movie" type="text"
+     <li class="nav-item container-fluid mt-5 ml-5"><input class="search-query form-control" placeholder="Search for a movie" type="text"
               name="suggestion" value="" id="suggestion" />
      </li>
 </form>
@@ -40,7 +39,6 @@ Index
             <!--<img src="{% static movie.image.url %}" />-->
             <img class="img-fluid" src="http://placehold.it/200x300" alt=""/>
             <a class="text-white" href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}">{{ movie.title }}</a>
-            
         </div>
         {% endfor %}
                 
