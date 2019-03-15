@@ -161,7 +161,7 @@ def profile(request, username):
         return redirect('index')
 
     userprofile = UserProfile.objects.get_or_create(user=user)[0]
-    form = UserProfileForm({'website': userprofile.website, 'picture': userprofile.picture})
+    form = UserProfileForm({'website': userprofile.website, 'picture': userprofile.picture, 'favorites': userprofile.favorites, 'watchlist': userprofile.watchlist})
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, request.FILES, instance=userprofile)
@@ -219,6 +219,7 @@ def like_movie(request):
             user = request.user
             profile = UserProfile.objects.get(user=user)
             profile.favorites.add(movie)
+            profile.save()
 
     return HttpResponse(likes)
 
@@ -240,5 +241,6 @@ def add_to_watchlist(request):
             user = request.user
             profile = UserProfile.objects.get(user=user)
             profile.watchlist.add(movie)
+            profile.save()
 
     return HttpResponse(watchlist)
