@@ -68,6 +68,8 @@
 </div>
 <!--movie style end-->
 
+<!-- Add the movie to favourites -->
+<font color="White">
 <br />
     <strong id="like_count">{{ movie.likes }}</strong> people have added this movie to their favourites
     <br>
@@ -80,6 +82,22 @@
         {% endif %}
     {% endif %}
 </div>
+
+<!-- Add the movie to watchlist -->
+<br />
+
+    <strong id="watchlist-count">{{ movie.watchlistCount }}</strong> people have added this movie to their watchlist
+    <br>
+    {% if user.is_authenticated %}
+        {% if show_watchlist_button %}
+        <button id="watchlist" data-movieid="{{movie.id}}"
+                class="btn btn-warning btn-sm" type="button">
+                Add to Watchlist
+            </button>
+        {% endif %}
+    {% endif %}
+</div>
+</font>
 
 
 

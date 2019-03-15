@@ -54,6 +54,7 @@ def show_category(request, category_name_slug):
 def show_movie(request, category_name_slug, movie_title_slug):
     context_dict = {}
     context_dict['show_like_button'] = False
+    context_dict['show_watchlist_button'] = False
     try:
         movie = Movie.objects.get(slug=movie_title_slug)
         context_dict['movie'] = movie
@@ -61,9 +62,13 @@ def show_movie(request, category_name_slug, movie_title_slug):
         if request.user.is_authenticated():
             profile = UserProfile.objects.get(user=request.user)
             favorites = profile.favorites.all()
+            watchlist = profile.watchlist.all()
 
             if movie not in favorites:
                 context_dict['show_like_button'] = True
+
+            if movie not in watchlist:
+                context_dict['show_watchlist_button'] = True
 
 
     except Movie.DoesNotExist:
@@ -218,4 +223,22 @@ def like_movie(request):
     return HttpResponse(likes)
 
 
+@login_required
+def add_to_watchlist(request):
+    movie_id = None
+    if request.method == 'GET':
+        movie_id = request.GET['movie_id']
+    watchlist = 0
+    if movie_id:
+        movie = Movie.objects.get(id=int(movie_id))
+        if movie:
+            watchlist = movie.watchlistCount + 1
+            movie.watchlistCount = watchlist
+            movie.save()
 
+            # Get user details
+            user = request.user
+            profile = UserProfile.objects.get(user=user)
+            profile.watchlist.add(movie)
+
+    return HttpResponse(watchlist)

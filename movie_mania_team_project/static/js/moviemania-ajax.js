@@ -8,6 +8,15 @@ $(document).ready(function() {
     });
 });
 
+    $('#watchlist').click(function() {
+    var movieid;
+    movieid = $(this).attr("data-movieid");
+    $.get('/moviemania/watchlist/', {movie_id: movieid}, function(data) {
+        $('#watchlist_count').html(data);
+        $('#watchlist').hide();
+    });
+});
+
 
 
     $('#suggestion').keyup(function(){

@@ -33,6 +33,7 @@ class Movie(models.Model):
     title = models.CharField(max_length=128)
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
+    watchlistCount = models.IntegerField(default=0)
     img = models.ImageField(blank=True)
     director = models.CharField(max_length=128, blank=True)
     actor = models.CharField(max_length=128, blank=True)
@@ -54,7 +55,9 @@ class UserProfile(models.Model):
     # The additional attributes we wish to include
     website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile:images', blank=True)
-    favorites = models.ManyToManyField(Movie)
+    favorites = models.ManyToManyField(Movie, related_name="likes_movie")
+    watchlist = models.ManyToManyField(Movie, related_name="watchlistCount_movie")
+
     # Override the __unicode__() method to return out something meaningful
     def __str__(self):
         return self.user.username
