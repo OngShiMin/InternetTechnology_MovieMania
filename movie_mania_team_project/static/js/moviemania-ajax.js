@@ -7,18 +7,31 @@ $(document).ready(function() {
         $('#likes').hide();
     });
 });
+});
 
+$(document).ready(function() {
     $('#watchlist').click(function() {
     var movieid;
     movieid = $(this).attr("data-movieid");
-    $.get('/moviemania/watchlist/', {movie_id: movieid}, function(data) {
+    $.get('/moviemania/watchlist_add/', {movie_id: movieid}, function(data) {
         $('#watchlist_count').html(data);
         $('#watchlist').hide();
     });
 });
+});
 
 
+$(document).ready(function() {
+    $('#remove_watchlist_button').click(function() {
+    var movieid;
+    movieid = $(this).attr("data-movieid");
+    $.get('/moviemania/watchlist_remove/', {movie_id: movieid}, function(data) {
+        $('#remove_watchlist_button').hide();
+    });
+});
+});
 
+$(document).ready(function() {
     $('#suggestion').keyup(function(){
         var query;
         query = $(this).val();

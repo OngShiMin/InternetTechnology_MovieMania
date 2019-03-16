@@ -55,6 +55,7 @@ def show_movie(request, category_name_slug, movie_title_slug):
     context_dict = {}
     context_dict['show_like_button'] = False
     context_dict['show_watchlist_button'] = False
+    context_dict['show_remove_watchlist_button'] = False
     try:
         movie = Movie.objects.get(slug=movie_title_slug)
         context_dict['movie'] = movie
@@ -69,6 +70,9 @@ def show_movie(request, category_name_slug, movie_title_slug):
 
             if movie not in watchlist:
                 context_dict['show_watchlist_button'] = True
+
+            if movie in watchlist:
+                context_dict['show_remove_watchlist_button'] = True
 
 
     except Movie.DoesNotExist:
@@ -102,7 +106,7 @@ def register(request):
                 profile.save()
                 registered = True
             else:
-                # Invalid form or forms - mistakes or sometihng else?
+                # Invalid form or forms - mistakes or something else?
                 # Print problems to the terminal
                 print(user_form.errors, profile_form.errors)
         else:
@@ -162,7 +166,8 @@ def profile(request, username):
 
     userprofile = UserProfile.objects.get_or_create(user=user)[0]
     form = UserProfileForm({'website': userprofile.website, 'picture': userprofile.picture, 'favorites': userprofile.favorites, 'watchlist': userprofile.watchlist})
-
+    form.fields['favorites'].queryset = userprofile.favorites.all()
+    form.fields['watchlist'].queryset = userprofile.watchlist.all()
     if request.method == 'POST':
         form = UserProfileForm(request.POST, request.FILES, instance=userprofile)
         if form.is_valid():
@@ -244,3 +249,26 @@ def add_to_watchlist(request):
             profile.save()
 
     return HttpResponse(watchlist)
+
+
+@login_required
+def remove_from_watchlist(request):
+    movie_id = None
+    if request.method == 'GET':
+        movie_id = request.GET['movie_id']
+    watchlist = 0
+    if movie_id:
+        movie = Movie.objects.get(id=int(movie_id))
+        if movie:
+            watchlist = movie.watchlistCount - 1
+            movie.watchlistCount = watchlist
+            movie.save()
+
+            # Get user details
+            user = request.user
+            profile = UserProfile.objects.get(user=user)
+            profile.watchlist.remove(movie)
+            profile.save()
+
+    return HttpResponse(watchlist)
+
