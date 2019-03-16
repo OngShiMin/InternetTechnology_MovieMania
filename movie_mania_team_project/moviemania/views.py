@@ -55,7 +55,9 @@ def show_movie(request, category_name_slug, movie_title_slug):
     context_dict = {}
     context_dict['show_like_button'] = False
     context_dict['show_watchlist_button'] = False
+    context_dict['show_remove_favorites_button'] = False
     context_dict['show_remove_watchlist_button'] = False
+
     try:
         movie = Movie.objects.get(slug=movie_title_slug)
         context_dict['movie'] = movie
@@ -70,6 +72,9 @@ def show_movie(request, category_name_slug, movie_title_slug):
 
             if movie not in watchlist:
                 context_dict['show_watchlist_button'] = True
+
+            if movie in favorites:
+                context_dict['show_remove_favorites_button'] = True
 
             if movie in watchlist:
                 context_dict['show_remove_watchlist_button'] = True
@@ -271,4 +276,26 @@ def remove_from_watchlist(request):
             profile.save()
 
     return HttpResponse(watchlist)
+
+
+@login_required
+def remove_from_favorites(request):
+    movie_id = None
+    if request.method == 'GET':
+        movie_id = request.GET['movie_id']
+    likes = 0
+    if movie_id:
+        movie = Movie.objects.get(id=int(movie_id))
+        if movie:
+            likes = movie.likes - 1
+            movie.likes = likes
+            movie.save()
+
+            # Get user details
+            user = request.user
+            profile = UserProfile.objects.get(user=user)
+            profile.favorites.remove(movie)
+            profile.save()
+
+    return HttpResponse(likes)
 
