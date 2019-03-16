@@ -11,17 +11,17 @@ from moviemania.models import Category, Movie
 
 def populate():
     action_movies = [
-        {"title": "Mission Impossible", "views": 32,"director":"Jack","actor":"Lily"},
-        {"title": "Avengers: Infinity War", "views": 16, "director":"Jack","actor":"Lily"}
+        {"title": "Mission Impossible", "views": 32,"director":"Jack","actor":"Lily", "img": "posters/MissionImpossibleFallout.jpg"},
+        {"title": "Avengers: Infinity War", "views": 16, "director":"Jack","actor":"Lily", "img": "posters/InfinityWar.jpg"}
     ]
 
     drama_movies = [
-        {"title": "Bohemian Rhapsody", "views": 32, "director": "Jack", "actor": "Lily"},
-        {"title": "Titanic", "views": 16, "director": "Jack", "actor": "Lily"}
+        {"title": "Bohemian Rhapsody", "views": 32, "director": "Jack", "actor": "Lily", "img": "posters/BohemianRhapsody.jpg"},
+        {"title": "Titanic", "views": 16, "director": "Jack", "actor": "Lily", "img": "posters/Titanic.jpg"}
     ]
 
     fantasy_movies = [
-        {"title": "Fantastic Beasts: The Crimes of Grindelwald", "views": 32,"director":"Jack","actor":"Lily"}
+        {"title": "Fantastic Beasts: The Crimes of Grindelwald", "views": 32,"director":"Jack","actor":"Lily", "img": "posters/CrimesOfGrindelwald.jpg"}
     ]
 
     cats = {"Action": {"movies": action_movies},
