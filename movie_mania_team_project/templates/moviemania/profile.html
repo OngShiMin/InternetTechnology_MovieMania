@@ -7,13 +7,18 @@
     <div class="page-header">
         <h1>{{selecteduser.username}} Profile</h1>
     </div>
+</br>
 
+
+<font color="White">
     {% if userprofile.picture %}
 	<img src="{{ MEDIA_URL }}{{ userprofile.picture }}" width="300" height="300" alt="{{user.username}}" />
     {% else %}
-    <img src="http://lorempixel.com/300/300/people/" img width="300" height="300" alt="{{user.username}}"/>
+    	<img src="http://lorempixel.com/300/300/people/" img width="300" height="300" alt="{{user.username}}"/>
     {% endif %}
 	<br/><br/>
+
+  </br>
 	<div id="profile_data">
 		{% if selecteduser.username == user.username %}
     	<form method="post" action="." enctype="multipart/form-data">
@@ -26,4 +31,9 @@
 		<p><strong>Website:</strong> <a href="{{userprofile.website}}">{{userprofile.website}}</a></p>
 		{% endif %}
 	</div>
+
+<div id="edit_profile"></div>
+
+</font>
+
 {% endblock %}

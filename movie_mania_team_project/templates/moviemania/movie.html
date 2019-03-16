@@ -81,12 +81,24 @@
             </button>
         {% endif %}
     {% endif %}
-</div>
+
+    <!-- Remove the movie from favorites -->
+    <br />
+    {% if user.is_authenticated %}
+        {% if show_remove_favorites_button %}
+        <button id="remove_favorites_button" data-movieid="{{movie.id}}"
+                class="btn btn-primary btn-sm" type="button">
+                Remove from Favorites
+            </button>
+        {% endif %}
+    {% endif %}
+
 
 <!-- Add the movie to watchlist -->
 <br />
+<br />
 
-    <strong id="watchlist-count">{{ movie.watchlistCount }}</strong> people have added this movie to their watchlist
+    <strong id="watchlist_count">{{ movie.watchlistCount }}</strong> people have added this movie to their watchlist
     <br>
     {% if user.is_authenticated %}
         {% if show_watchlist_button %}
@@ -96,7 +108,19 @@
             </button>
         {% endif %}
     {% endif %}
-</div>
+
+
+<!-- Remove the movie from watchlist -->
+<br />
+    {% if user.is_authenticated %}
+        {% if show_remove_watchlist_button %}
+        <button id="remove_watchlist_button" data-movieid="{{movie.id}}"
+                class="btn btn-primary btn-sm" type="button">
+                Remove from Watchlist
+            </button>
+        {% endif %}
+    {% endif %}
+</span>
 </font>
 
 

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    /*
     $("#about-btn").click( function(event) {
         msgstr = $("#msg").html()
         msgstr = msgstr + "ooo"
@@ -6,6 +7,8 @@ $(document).ready(function() {
         alert("You clicked the button using JQuery!");
 
     });
+    */
+
 
     $("p").hover( function() {
         $(this).css('color', 'red');

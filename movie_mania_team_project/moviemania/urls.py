@@ -14,7 +14,9 @@ urlpatterns = [
     url(r'^profiles/$', views.list_profiles, name='list_profiles'),
     url(r'^suggest_movie/$', views.suggest_movie, name='suggest_movie'),
     url(r'^like/$', views.like_movie, name='like_movie'),
-    url(r'^watchlist/$', views.add_to_watchlist, name='add_to_watchlist'),
+    url(r'^favorites_remove/$', views.remove_from_favorites, name='remove_from_favorites'),
+    url(r'^watchlist_add/$', views.add_to_watchlist, name='add_to_watchlist'),
+    url(r'^watchlist_remove/$', views.remove_from_watchlist, name='remove_from_watchlist'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
 # =============================================================================
