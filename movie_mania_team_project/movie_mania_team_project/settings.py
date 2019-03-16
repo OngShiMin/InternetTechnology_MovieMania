@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'moviemania',
     'registration',
     'star_ratings',
+    'social_django',
 ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'movie_mania_team_project.urls'
@@ -70,7 +72,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media'
+                'django.template.context_processors.media',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -109,6 +113,14 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+        
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -141,6 +153,9 @@ LOGIN_REDIRECT_URL = '/moviemania/'
 # The page users are directed to if they are not logged in,
 # and are trying to access pages requiring authentication
 LOGIN_URL = '/accounts/login/'
+
+SOCIAL_AUTH_TWITTER_KEY = 'p6tIyKcdH0VF0OvW3g9UT3DYf'
+SOCIAL_AUTH_TWITTER_SECRET = 'DGG9avsVF1xIJhHzF84XoIS2HDLtQxZGHV1jYtNwS4r7k9hMAS'
 
 # Variables for star ratings
 # Prohibit users from altering their ratings
