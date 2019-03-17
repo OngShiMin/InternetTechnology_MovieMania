@@ -5,8 +5,24 @@
 
 {% block body_block %}
 <div>
+    <font color="White">
+    <br/>
     <h1>Search in MovieMania</h1>
     <br/>
+
+    <!-- Search Bar -->
+<form>
+     <form class="nav-item container-fluid mt-5 ml-5"><input class="search-query form-control" placeholder="Search for a movie" type="text"
+              name="suggestion" value="" id="suggestion" />
+     <form>
+</form>
+<hr>
+
+<div id="movies">
+</div>
+    </font>
+    <!--
+
     <form class="form-inline" id="user_form"
           method="post" action="{% url 'search' %}">
         {% csrf_token %}
@@ -35,5 +51,7 @@
         </div>
         {% endif %}
     </div>
+
+    -->
 </div>
 {% endblock %}
