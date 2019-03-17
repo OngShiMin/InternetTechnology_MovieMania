@@ -10,11 +10,7 @@
     <div class="w-100" id="movietitle"><h2 href="" class="w-100 text-white font-weight-bold font-italic text-warning " >{{ movie.title }}</h2></div>
     
     <div class="w-25  ">
-        <div class="w-100 " id="movieimg"><img src="{% static movie.image.url %}" class="w-100"/></div>
-        <div class="w-100 " id="movieimg"><img src="{{ MEDIA_URL}} {{ movie.title }}.jpg" class="w-100"/></div>
-        <div class="w-100 " id="movieimg"><img src="{% static "posters/{{movie.title}}.jpg" %} class="w-100"/></div>
-        <div class="w-100 " id="movieimg"><img src="{{ u.movie.image.url }}" class="w-100"/></div>
-        <div class="w-100 " id="movieimg"><img src="{{ movie.image }}" class="w-100"/></div>
+        <img src="{{ MEDIA_URL }}{{movie.img }}" alt="{{movie.title}}">
         
         <div class="w-100 " id="preview"><a href="#" class="w-100  font-weight-bold text-white">Watch Preview</a></div>
         <div class="w-100 " id="stream"><a href="#" class="w-100  font-weight-bold text-white" >Stream Online</a></div>

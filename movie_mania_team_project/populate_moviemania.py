@@ -21,8 +21,10 @@ def populate():
     ]
 
     fantasy_movies = [
-        {"title": "Fantastic Beasts: The Crimes of Grindelwald", "views": 32,"director":"Jack","actor":"Lily"}
+        {"title": "Fantastic Beasts: The Crimes of Grindelwald", "views": 32,
+         "director":"Jack","actor":"Lily"}
     ]
+
 
     cats = {"Action": {"movies": action_movies},
             "Drama": {"movies": drama_movies},

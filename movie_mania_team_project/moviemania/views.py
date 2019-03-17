@@ -201,6 +201,27 @@ def get_movie_list(max_results=0, starts_with=''):
     return movie_list
 
 
+def get_director_list(max_results=0, starts_with=''):
+    director_list = []
+    if starts_with:
+        director_list = Movie.director.filter(title__istartswith=starts_with)
+
+    if max_results > 0:
+        if len(director_list) > max_results:
+            movie_list = director_list[:max_results]
+    return director_list
+
+def get_actor_list(max_results=0, starts_with=''):
+    actor_list = []
+    if starts_with:
+        actor_list = Movie.actor.filter(title__istartswith=starts_with)
+
+    if max_results > 0:
+        if len(actor_list) > max_results:
+            movie_list = actor_list[:max_results]
+    return actor_list
+
+
 def suggest_movie(request):
     movie_list = []
     starts_with = ''
@@ -208,7 +229,6 @@ def suggest_movie(request):
     if request.method == 'GET':
         starts_with = request.GET['suggestion']
     movie_list = get_movie_list(8, starts_with)
-
     return render(request, 'moviemania/movies.html', {'movies': movie_list})
 
 
