@@ -1,15 +1,24 @@
 {% extends "moviemania/base.html" %}
 {% block body_block %}
+</br>
     <h1  class=" font-weight-bold text-white ">Register Here</h1>
     <form method="post" action=".">
         {% csrf_token %}
-        {{ form.as_p }}
-        <div class="container">
-            <div class="form row">
-                <div class="col-sm-2 col-md-2 "></div>
-                <br>
-                <div class="form-horizontal col-sm-8 col-md-8" id="signup_form">
-                
-        <input type="submit" value="Submit" />
+        {% for field in form %}
+        <p>
+            <i class="fa fa-lg text-white">{{ field.label_tag }}</i>
+            <br>
+             {{ field }}
+            {% if field.help_text %}
+                </br>
+                <small style="color:grey">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+                <p style="color:red">{{ error }}</p>
+            {% endfor %}
+        </p>
+    {% endfor %}
+                       
+        <input class="btn btn-outline-secondary btn-sm" type="submit" value="Submit" />
     </form>
 {% endblock %}

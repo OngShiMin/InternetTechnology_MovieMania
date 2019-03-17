@@ -212,6 +212,7 @@ def get_director_list(max_results=0, starts_with=''):
             movie_list = director_list[:max_results]
     return director_list
 
+
 def get_actor_list(max_results=0, starts_with=''):
     actor_list = []
     if starts_with:
