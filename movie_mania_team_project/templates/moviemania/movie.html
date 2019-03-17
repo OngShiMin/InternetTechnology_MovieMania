@@ -8,7 +8,7 @@
 <!--This is the style of a movie-->
 <div class="row">
     <div class="w-100" id="movietitle"><h2 href="" class="w-100 text-white font-weight-bold font-italic text-warning " >{{ movie.title }}</h2></div>
-    
+
     <div class="w-25  ">
         <img src="{{ MEDIA_URL }}{{movie.img }}" alt="{{movie.title}}">
         
@@ -25,8 +25,65 @@
         <p class="font-weight-bold text-white "> {% ratings movie %}</p>
         </div>
     <br />
+<!-- Favorites and Watchlist buttons -->
+
+<!-- Add the movie to favourites -->
+<font color="White">
+<br />
+    <strong id="like_count">{{ movie.likes }}</strong> people have added this movie to their favourites
+    <br>
+    {% if user.is_authenticated %}
+        {% if show_like_button %}
+        <button id="likes" data-movieid="{{movie.id}}"
+                class="btn btn-danger btn-sm" type="button">
+                Add to Favourites
+            </button>
+        {% endif %}
+    {% endif %}
+
+    <!-- Remove the movie from favorites -->
+    <br />
+    {% if user.is_authenticated %}
+        {% if show_remove_favorites_button %}
+        <button id="remove_favorites_button" data-movieid="{{movie.id}}"
+                class="btn btn-primary btn-sm" type="button">
+                Remove from Favorites
+            </button>
+        {% endif %}
+    {% endif %}
+        <!-- Add the movie to watchlist -->
+<br />
+<br />
+
+    <strong id="watchlist_count">{{ movie.watchlistCount }}</strong> people have added this movie to their watchlist
+    <br>
+    {% if user.is_authenticated %}
+        {% if show_watchlist_button %}
+        <button id="watchlist" data-movieid="{{movie.id}}"
+                class="btn btn-warning btn-sm" type="button">
+                Add to Watchlist
+            </button>
+        {% endif %}
+    {% endif %}
+
+
+<!-- Remove the movie from watchlist -->
+<br />
+    {% if user.is_authenticated %}
+        {% if show_remove_watchlist_button %}
+        <button id="remove_watchlist_button" data-movieid="{{movie.id}}"
+                class="btn btn-primary btn-sm" type="button">
+                Remove from Watchlist
+            </button>
+        {% endif %}
+    {% endif %}
+</span>
+</font>
+
+<!-- end of favorites and watchlist buttons -->
     </div>
-    
+
+
     <div class="w-70">
         <div class="w-100" >
             <h3 href="" class="w-100  font-weight-bold text-muted " >Summary</h3>
@@ -66,60 +123,11 @@
 </div>
 <!--movie style end-->
 
-<!-- Add the movie to favourites -->
-<font color="White">
-<br />
-    <strong id="like_count">{{ movie.likes }}</strong> people have added this movie to their favourites
-    <br>
-    {% if user.is_authenticated %}
-        {% if show_like_button %}
-        <button id="likes" data-movieid="{{movie.id}}"
-                class="btn btn-danger btn-sm" type="button">
-                Add to Favourites
-            </button>
-        {% endif %}
-    {% endif %}
-
-    <!-- Remove the movie from favorites -->
-    <br />
-    {% if user.is_authenticated %}
-        {% if show_remove_favorites_button %}
-        <button id="remove_favorites_button" data-movieid="{{movie.id}}"
-                class="btn btn-primary btn-sm" type="button">
-                Remove from Favorites
-            </button>
-        {% endif %}
-    {% endif %}
 
 
-<!-- Add the movie to watchlist -->
-<br />
-<br />
-
-    <strong id="watchlist_count">{{ movie.watchlistCount }}</strong> people have added this movie to their watchlist
-    <br>
-    {% if user.is_authenticated %}
-        {% if show_watchlist_button %}
-        <button id="watchlist" data-movieid="{{movie.id}}"
-                class="btn btn-warning btn-sm" type="button">
-                Add to Watchlist
-            </button>
-        {% endif %}
-    {% endif %}
 
 
-<!-- Remove the movie from watchlist -->
-<br />
-    {% if user.is_authenticated %}
-        {% if show_remove_watchlist_button %}
-        <button id="remove_watchlist_button" data-movieid="{{movie.id}}"
-                class="btn btn-primary btn-sm" type="button">
-                Remove from Watchlist
-            </button>
-        {% endif %}
-    {% endif %}
-</span>
-</font>
+
 
 
 
