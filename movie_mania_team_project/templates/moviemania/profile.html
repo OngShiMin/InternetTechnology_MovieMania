@@ -26,7 +26,20 @@
 		{% if selecteduser.username == user.username %}
     	<form method="post" action="." enctype="multipart/form-data">
     		{% csrf_token %}
-    		{{ form.as_p }}
+    		{% for field in form %}
+        <p>
+            <i class="fa fa-lg text-white">{{ field.label_tag }}</i>
+            <br>
+             {{ field }}
+            {% if field.help_text %}
+                </br>
+                <small style="color:grey">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+                <p style="color:red">{{ error }}</p>
+            {% endfor %}
+        </p>
+    {% endfor %}
     		<input type="submit" value="Update" />
     	</form>
         {% else %}
