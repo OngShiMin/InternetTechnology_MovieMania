@@ -45,7 +45,12 @@ INSTALLED_APPS = [
     'registration',
     'star_ratings',
     'social_django',
+    'django.contrib.sites',
+    'django_comments',
 ]
+# Comments
+SITE_ID =1
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
@@ -154,8 +159,11 @@ LOGIN_REDIRECT_URL = '/moviemania/'
 # and are trying to access pages requiring authentication
 LOGIN_URL = '/accounts/login/'
 
-SOCIAL_AUTH_TWITTER_KEY = 'p6tIyKcdH0VF0OvW3g9UT3DYf'
-SOCIAL_AUTH_TWITTER_SECRET = 'DGG9avsVF1xIJhHzF84XoIS2HDLtQxZGHV1jYtNwS4r7k9hMAS'
+SOCIAL_AUTH_TWITTER_KEY = 'shYcJgmtKTDed2AH4J0dVZ9B4'
+SOCIAL_AUTH_TWITTER_SECRET = 'ZyOtKkObRW8Pp7Qh781eV8m1UbC6DlLO9LQQaDLkSUYWEslG3g'
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/settings/'
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 # Variables for star ratings
 # Prohibit users from altering their ratings
@@ -166,6 +174,7 @@ STAR_RATINGS_RANGE = 5
 STAR_RATINGS_ANONYMOUS = False
 # Location of star sprite sheet
 STAR_RATINGS_STAR_SPRITE = '/star-ratings/images/stars.png'
+
 
 # Media Files
 MEDIA_ROOT = MEDIA_DIR

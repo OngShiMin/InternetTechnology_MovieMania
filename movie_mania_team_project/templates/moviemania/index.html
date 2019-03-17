@@ -35,9 +35,17 @@ Index
                     
         {% for movie in movies %}
         <div class="col-md">
+
             <!--<img class="img-fluid" src="{{ movie.image.url }}">-->
             <!--<img src="{% static movie.image.url %}" />-->
-            <img src="{{ MEDIA_URL }}{{movie.img }}" alt="{{movie.title}}">
+            <!-- <img src="{{ MEDIA_URL }}{{movie.img }}" alt="{{movie.title}}"> -->
+
+            {% if Movie.img %}
+                <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}"><img class="img-fluid" src="{{ MEDIA_URL }}{{ movies.img }}"></a>
+            {% else %}
+                <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}"><img class="img-fluid" src="http://placehold.it/200x300" alt=""/></a>
+            {% endif %}
+
             <a class="text-white" href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}">{{ movie.title }}</a>
         </div>
         {% endfor %}

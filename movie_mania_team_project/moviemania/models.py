@@ -2,14 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
-
-#from django.core.files.storage import FileSystemStorage
-
-
 from django.core.files.storage import FileSystemStorage
 
 
-fs = FileSystemStorage(location='/media/posters')
+#fs = FileSystemStorage(location='/media/posters')
 
 
 
@@ -34,7 +30,7 @@ class Movie(models.Model):
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
     watchlistCount = models.IntegerField(default=0)
-    img = models.ImageField(blank=True)
+    img = models.ImageField(upload_to='posters', blank=True)
     director = models.CharField(max_length=128, blank=True)
     actor = models.CharField(max_length=128, blank=True)
     content = models.TextField(blank=True)
@@ -54,7 +50,7 @@ class UserProfile(models.Model):
 
     # The additional attributes we wish to include
     website = models.URLField(blank=True)
-    picture = models.ImageField(upload_to='profile:images', blank=True)
+    picture = models.ImageField(upload_to='profile_images', blank=True)
     favorites = models.ManyToManyField(Movie, related_name="likes_movie", blank=True)
     watchlist = models.ManyToManyField('Movie', blank=True, related_name="watchlistCount_movie")
 
