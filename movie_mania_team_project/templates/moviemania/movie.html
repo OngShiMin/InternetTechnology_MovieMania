@@ -1,7 +1,7 @@
 {% extends 'moviemania/base.html' %}
 {% load staticfiles %}
 {% load ratings %}
-
+{% load comments %}
 
 {% block body_block %}
     <br />
@@ -44,13 +44,15 @@
             <p class="font-weight-bold text-white ">This is a test </p>
         </div>
         <div class="w-100 form-group"  >
-         <button id="comment-btn" onclick="loadComment()" class="btn btn-secondary " type="submit" value="Comment">Comment</button>
-            <form action=" " method="post" id="reviews" style="display: block;">
-                {% csrf_token %}
-                <label class="font-weight-bold text-white" for="reviewcontent">Enter comments: </label>
-                <textarea class="form-control" id="reviewcontent" rows="3"></textarea>
-                <input  class="btn btn-secondary btn-sm" type="submit" onclick="myFunction()" value="OK">
-             </form>
+            <!--comment count -->
+            {% get_comment_count for moviemania.movie title as comment_count%}
+        <!--comment form -->
+            {% if user.is_authenticated %}
+            {% render_comment_form for movie %}
+            {% endif %}
+            <p class="font-weight-bold text-muted">{{ comment_count }} comments have been posted.</p>
+            <!--<button id="comment-btn" onclick="loadComment()" class="btn btn-secondary " type="submit" value="Comment">Comment</button>-->
+            
         
         <!--star rating-->
             <div id="rateYo"></div>

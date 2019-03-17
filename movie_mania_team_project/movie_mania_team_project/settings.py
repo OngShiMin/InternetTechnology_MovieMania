@@ -45,7 +45,12 @@ INSTALLED_APPS = [
     'registration',
     'star_ratings',
     'social_django',
+    'django.contrib.sites',
+    'django_comments',
 ]
+# Comments
+SITE_ID =1
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
@@ -169,6 +174,7 @@ STAR_RATINGS_RANGE = 5
 STAR_RATINGS_ANONYMOUS = False
 # Location of star sprite sheet
 STAR_RATINGS_STAR_SPRITE = '/star-ratings/images/stars.png'
+
 
 # Media Files
 MEDIA_ROOT = MEDIA_DIR
