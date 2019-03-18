@@ -70,7 +70,7 @@
         {% if show_watchlist_button %}
             <button id="watchlist" data-movieid="{{movie.id}}"
                 class="btn btn-warning btn-sm" type="button">
-                Add to Watchlist
+               + Add to Watchlist
             </button>
         {% endif %}
         {% endif %}
@@ -109,14 +109,13 @@
             {% render_comment_form for movie %}
             {% endif %}
             <p class="font-weight-bold text-muted">{{ comment_count }} comments have been posted.</p>
-          </div>  
+     </div>  
         
         <!--star rating-->
             <div id="rateYo"></div>
             <div>
                 <button id="getRating"  class="btn btn-primary btn-sm ">Sumit</button>
             </div>
-        </div>
 <!--star rating end-->
         
         <span class="w-100 bg-light border border-warning" style="width:100px;height: 50px" >
