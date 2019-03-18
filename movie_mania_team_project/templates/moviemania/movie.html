@@ -12,8 +12,14 @@
     <div class="w-25  ">
         <img src="{{ MEDIA_URL }}{{movie.img }}" width="200" height="300" alt="{{movie.title}}">
         
-        <div class="w-100 " id="preview"><a href="#" class="w-100  font-weight-bold text-white">Watch Preview</a></div>
+        <div class="w-100 " id="preview"><a href="{{ movie.preview }}" class="w-100  font-weight-bold text-white">Watch Preview</a></div>
         <div class="w-100 " id="stream"><a href="#" class="w-100  font-weight-bold text-white" >Stream Online</a></div>
+        {% if movie.netflix_link %}
+            <div class="w-100 " id="netflix"><a href="{{ movie.netflix_link }}" class="w-100  font-weight-bold text-white" >Netflix</a></div>
+        {% endif %}
+        {% if movie.amazon_link %}
+        <div class="w-100 " id="amazon"><a href="{{ movie.amazon_link }}" class="w-100  font-weight-bold text-white" >Amazon</a></div>
+        {% endif %}
         
         <div class="w-100 " id="stars">
     <!--need to edit-->
@@ -87,14 +93,14 @@
     <div class="w-70">
         <div class="w-100" >
             <h3 href="" class="w-100  font-weight-bold text-muted " >Summary</h3>
-            <div class="w=100" id="summary"><p class="w-100  font-weight-bold text-white ">This is a test</p></div>
+            <div class="w=100" id="summary"><p class="w-100  font-weight-bold text-white ">{{ movie.content }}</p></div>
         </div>
         <div class="w-100">
-            <p class="w-100 text-white">Directed by: XXX(need to edit)</p>
+            <p class="w-100 text-white">Directed by: {{ movie.director }}</p>
         </div>
         <div class="w-100" >
             <h3  class=" font-weight-bold text-muted " >Casts </h3>
-            <p class="font-weight-bold text-white ">This is a test </p>
+            <p class="font-weight-bold text-white ">{{ movie.actor }}</p>
         </div>
         <div class="w-100 form-group"  >
             <!--comment count -->

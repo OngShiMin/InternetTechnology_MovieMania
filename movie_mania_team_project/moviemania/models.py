@@ -34,6 +34,9 @@ class Movie(models.Model):
     director = models.CharField(max_length=128, blank=True)
     actor = models.CharField(max_length=128, blank=True)
     content = models.TextField(blank=True)
+    amazon_link = models.URLField(blank=True)
+    netflix_link = models.URLField(blank=True)
+    preview = models.URLField(blank=True)
     slug = models.SlugField(blank=True)
 
     def save(self, *args, **kwargs):
