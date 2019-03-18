@@ -17,13 +17,13 @@ def populate():
          },
         {"title": "Avengers: Infinity War", "views": 16, "likes": 32, "director":"Jack","actor":"Lily",
          "content": "Exciting action movie about the Avengers",
-         "netflix_link": "", "amazon_link": "", "preview": "","img": "posters/InfinityWar.jpg"}
+         "netflix_link": "", "amazon_link": "", "preview": "https://www.youtube.com/watch?v=6ZfuNTqbHE8","img": "posters/InfinityWar.jpg"}
     ]
 
     drama_movies = [
         {"title": "Bohemian Rhapsody", "views": 32, "likes": 16,
          "content": "A movie about the exciting history of Queen",
-         "netflix_link": "", "amazon_link": "", "preview": "",
+         "netflix_link": "", "amazon_link": "", "preview": "https://www.youtube.com/watch?v=mP0VHJYFOAU",
          "director": "Jack", "actor": "Lily", "img": "posters/BohemianRhapsody.jpg"},
         {"title": "Titanic", "views": 16, "likes": 16, "director": "Jack", "actor": "Lily",
          "content": "Tragic love story set on the Titanic",
