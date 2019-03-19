@@ -59,17 +59,17 @@
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'auth_login' %}" >Log in</a>
+            <a class="nav-link" href="{% url 'auth_login' %}" style="color:white;">Log in</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'registration_register' %}" >Sign up</a>
+            <a class="nav-link" href="{% url 'registration_register' %}" style="color:white;" >Sign up</a>
           </li>
 
           {% endif %}
           
           <!--drop down navigation for categories-->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color:white;"s>Categories</a>
                 <div class="dropdown-menu">
                 {% get_category_list %}
                 <ul>
