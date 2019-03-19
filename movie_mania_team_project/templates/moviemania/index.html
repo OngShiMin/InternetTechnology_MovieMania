@@ -6,21 +6,19 @@ Index
 {% endblock %}
 
 
-<!-- Custom styles for this search bar -->
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"><script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-
 {% block body_block %}
 <!-- Search Bar -->
 <br>
-<br/>
-<br/>
-<form>
-     <form class="nav-item container-fluid mt-5 ml-5" ><input class="search-query form-control" placeholder="Search for a movie" type="text"
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-7">
+     <form class="nav-item container-fluid mt-5 ml-5" ><input class="search-query form-control width-50" placeholder="Search for a movie" type="text"
               name="suggestion" value="" id="suggestion" />
      </form>
-</form>
+    </div>
+    <div class="col-2"></div>
+</div>
 <hr>
 
 <div id="movies">
@@ -30,7 +28,7 @@ Index
 
    
 <!-- Top Movies -->
-</br>
+
 <div class="container-fluid ml-5">
 <h3 class="font-weight-bold text-white text-warning">Top Movies</h3>
 </br>
@@ -40,10 +38,6 @@ Index
                     
         {% for movie in movies %}
         <div class="col-md">
-
-            <!--<img class="img-fluid" src="{{ movie.image.url }}">-->
-            <!--<img src="{% static movie.image.url %}" />-->
-            <!-- <img src="{{ MEDIA_URL }}{{movie.img }}" alt="{{movie.title}}"> -->
 
             {% if movies %}
                 <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}""><img src="{{ MEDIA_URL }}{{movie.img}}" width="150" height="250" alt="{{movie.title}}"></a>

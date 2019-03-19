@@ -5,45 +5,43 @@
 
 {% block body_block %}
 <br />
-<div class="container-fluid mt-5 ml-5 px-2">   
+<div class="container">
+    <br>
 <!--Movie Title-->
     <div class="w-100" id="movietitle">
-        <h2 href="" class="w-100 text-white font-weight-bold font-italic text-warning " >
+        <h2 href="" class="w-100 text-white text-center font-weight-bold font-italic text-warning " >
             {{ movie.title }}
         </h2>
     </div>
-
-<!--left column-->
+    <br>
+    <!--movie content div-->
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-1"></div>
+<!--left column-->
+    <div class=" col-4">
+        <div class="">
             <img src="{{ MEDIA_URL }}{{movie.img }}" width="200" height="300" alt="{{movie.title}}">
-        <div class="w-100 " id="preview"><a href="{{ movie.preview }}" class="w-100  font-weight-bold text-white">Watch Preview</a></div>
-        <div class="w-100 " id="stream"><a class="w-100  font-weight-bold text-white" >Stream Online:</a></div>
-        <ul>
-        {% if movie.netflix_link %}
-            <a id="netflix" href="{{ movie.netflix_link }}" class="w-100  font-weight-bold text-white" ><img src="/static/images/netflix.png" style="height: 30px;width: 30px"></a>
-        {% endif %}
-        {% if movie.amazon_link %}
-            <a id="amazon" href="{{ movie.amazon_link }}" class="w-100  font-weight-bold text-white" ><img src="/static/images/Amazon.png" style="height: 30px;width: 30px"></a>
-        {% endif %}
-        </ul>
+            <div class="w-100 " id="preview">
+                <a href="{{ movie.preview }}" class="w-100  font-weight-bold text-white">Watch Preview</a>
+            </div>
+            <div class="w-100 " id="stream">
+                <a class="w-100  font-weight-bold text-white" >Stream Online:</a>
+            </div>
+            <div>
+                <ul>
+                    {% if movie.netflix_link %}
+                      <a id="netflix" href="{{ movie.netflix_link }}" class="w-100  font-weight-bold text-white" ><img src="/static/images/netflix.png" style="height: 30px;width: 30px"></a>
+                    {% endif %}
+                    {% if movie.amazon_link %}
+                        <a id="amazon" href="{{ movie.amazon_link }}" class="w-100  font-weight-bold text-white" ><img src="/static/images/Amazon.png" style="height: 30px;width: 30px"></a>
+                    {% endif %}
+                 </ul>
+            </div>
         </div>    
-        
-        <div class="w-100 " id="stars">
-        <!--need to edit-->
-            <i class='fas fa-star text-warning' style='font-size:16px'></i>
-            <i class='fas fa-star text-warning' style='font-size:16px'></i>
-            <i class='fas fa-star text-warning' style='font-size:16px'></i>
-            <i class='fas fa-star text-warning' style='font-size:16px'></i>
-            <i class='fas fa-star text-warning' style='font-size:16px'>5.0</i>
-            <p class="font-weight-bold text-white "> {% ratings movie %}</p>
-        </div>
-    <br />
-    
-    <!-- Favorites and Watchlist buttons -->
-    <!-- Add the movie to favourites -->
-    <font color="White">
-    <br />
+              
+ <!-- Favorites and Watchlist buttons -->
+ <!-- Add the movie to favourites -->
+        <font color="White">
         <h5>Favourits:  <strong id="like_count">{{ movie.likes }}</strong></h5>
         {% if user.is_authenticated %}
         {% if show_like_button %}
@@ -64,19 +62,19 @@
         {% endif %}
         {% endif %}
     <!-- Add the movie to watchlist -->
-<br />
-<br />
-
-    <h5>Watchlist:  <strong id="watchlist_count">{{ movie.watchlistCount }}</strong></h5>
-        {% if user.is_authenticated %}
-        {% if show_watchlist_button %}
-            <button id="watchlist" data-movieid="{{movie.id}}"
-                class="btn btn-warning btn-sm" type="button">
-               + Watchlist
-            </button>
-        {% endif %}
-        {% endif %}
-
+    <br/>
+    <br/>
+    <div>
+        <h5>Watchlist:  <strong id="watchlist_count">{{ movie.watchlistCount }}</strong></h5>
+            {% if user.is_authenticated %}
+                {% if show_watchlist_button %}
+                    <button id="watchlist" data-movieid="{{movie.id}}"
+                      class="btn btn-warning btn-sm" type="button">
+                    + Watchlist
+                 </button>
+                {% endif %}
+            {% endif %}
+    </div>
 
     <!-- Remove the movie from watchlist -->
         {% if user.is_authenticated %}
@@ -87,53 +85,70 @@
             </button>
         {% endif %}
         {% endif %}
+    <br/>
+        
+        <div class="w-100 text-white " id="stars">
+            <p class="font-weight-bold text-white "> {% ratings movie %}</p>
+        </div>
+    
+
 </span>
 </font>
-
+        
+    </div>
 <!-- end of favorites and watchlist buttons -->
 
 <!--right column-->
+        <div class="col-6 ">
 <!--movie description-->
-    <div align="right" class="col-md-6 mb-md-0 mb-3">
-    <div class="col-md-6">
-        <h3 href="" class="w-100  font-weight-bold text-white " >Summary</h3>
-        <p  id="summary" class="w-100  font-weight-bold text-white ">{{ movie.content }}</p>
-        <p class="w-100 text-white">Directed by: <a class="font-weight-bold text-white ">{{ movie.director }}</a></p>
-        <h3  class=" font-weight-bold text-white " >Casts </h3>
-        <p class="font-weight-bold text-white ">{{ movie.actor }}</p>
-    </div>
-    </div>
+            <br><br>
+            <div class="col-md-12 card border-success  shadow-lg card-outline-secondary card-inverse"  style="background-color: transparent;">
+                <h4 href="" class="  font-weight-bold text-warning card-header  " style="background-color: transparent;">Summary</h4>
+                <p  id="summary" class="w-100  font-weight-bold text-white ">{{ movie.content }}</p>
+            </div>
+            <div class="col-md-12 card border-primary card-outline-secondary card-inverse" style="background-color: transparent;">
+                <h4 class="w-100 font-weight-bold text-warning card-header " style="background-color: transparent;" >Directed by: </h4>
+                <p class="font-weight-bold text-white " >{{ movie.director }}</p>
+            </div>
+            <div class="col-md-12 card border-primary card-outline-secondary card-inverse" style="background-color: transparent;">
+                <h4  class=" w-100 font-weight-bold text-warning  card-header" style="background-color: transparent;">Casts </h4>
+                <p class="font-weight-bold text-white" >{{ movie.actor }}</p>
+            </div>
 <!--end movie description-->
     
-    <div class="w-100 form-group"  >
-        <!--comment count -->
-        {% get_comment_count for moviemania.movie title as comment_count%}
-        <!--comment form -->
+    <div class="w-100 form-group text-white  "  >
+
+        <!--comment submit form -->
+        <div class="col-md-12 card border-success  card-outline-secondary card-inverse" style="background-color: transparent;">
+            {% get_comment_form for movie as form %}
             {% if user.is_authenticated %}
-            {% render_comment_form for movie %}
+                <h4  class=" w-100 font-weight-bold text-warning  card-header" style="background-color: transparent;">Add Comments:</h4>
+                <p class="font-weight-bold text-white" >
+                  {% render_comment_form for movie %}
+                 </p>
             {% endif %}
-            <p class="font-weight-bold text-muted">{{ comment_count }} comments have been posted.</p>
+        </div>
+        <!--comment count -->
+        {% get_comment_count for movie  as comment_count%}
+        <div class="col-md-12 card border-success  card-outline-secondary card-inverse "  style="background-color: transparent;">
+            <h4 href="" class="  font-weight-bold text-warning card-header  " style="background-color: transparent;">Comment Number:</h4>
+            <h6  class="w-100   text-success ">{{ comment_count }} comments have been posted.</h6>
+        </div>
+        <!--comment content-->
+        <div class="col-md-12 card border-success  card-outline-secondary  card-inverse" style="background-color: transparent;">
+            <h4  class=" w-100 font-weight-bold text-warning  card-header" style="background-color: transparent;">History Comments: </h4>
+            <p class="font-weight-bold text-white" > {% render_comment_list for movie %}</p>
+        </div>
+
+
      </div>  
         
-        <!--star rating-->
-            <div id="rateYo"></div>
-            <div>
-                <button id="getRating"  class="btn btn-primary btn-sm ">Submit</button>
-            </div>
-<!--star rating end-->
-        
-        <span class="w-100 bg-light border border-warning" style="width:100px;height: 50px" >
-            <i class="w-20 fas fa-user text-white" style="font-size:16px"> Username</i>
-            <p class="w-100 text-white">Comment content</p>
-        </span>
     </div>
 </div>
 </div>
 <!--movie style end-->
 
-<br />
 
 
 {% endblock %}
-
 

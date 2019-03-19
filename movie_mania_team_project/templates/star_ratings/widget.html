@@ -8,6 +8,7 @@
         height: {{ icon_height }}px;
         background: url({{ sprite_image }}) no-repeat;
         background-size: {{ sprite_width }}px;
+        border: transparent;
     }
     #{{ id }} .star-ratings-rating-empty {
         background-position: -{{ icon_width }}px 0;
@@ -21,7 +22,7 @@
 {% endblock rating_style %}
 
 {% block rating_container %}
-  <strong>This is how Movie Mania users rated this movie: </strong>
+  <strong>Rated by MovieManiacs: </strong>
 <div id="{{ id }}" class="star-ratings" data-max-rating="{{ star_count }}" data-avg-rating="{{ rating.average }}">
     {% block rating_stars %}
         <div class="star-ratings-rating-stars-container">

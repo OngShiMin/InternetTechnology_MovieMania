@@ -36,7 +36,7 @@ def populate():
          
         {"title": "Titanic", "views": 16, "likes": 16, "director": "Jack", "actor": "Lily",
          "content": "Tragic love story set on the Titanic",
-         "netflix_link": "", "amazon_link": "https://www.amazon.co.uk/dp/B07JP1QM39?ref_=imdbref_tt_wbr_aiv&tag=imdbtag_tt_wbr_aiv-21",
+         "netflix_link": "", "amazon_link": "https://www.amazon.co.uk/dp/B019HYDKBK?ref_=imdbref_tt_wbr_aiv&tag=imdbtag_tt_wbr_aiv-21",
          "preview": "", "img": "posters/Titanic.jpg"},
          
         {"title": "12 Years a Slave", "views": 16, "likes": 16, "director": "Steve McQueen", "actor": " Chiwetel Ejiofor, Michael Kenneth Williams, Michael Fassbender",

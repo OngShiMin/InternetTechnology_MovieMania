@@ -7,12 +7,14 @@
 <br/>
 <font color="White">
     <div class="page-header">
-        <h1>{{selecteduser.username}} Profile</h1>
+        <h1 class="w-100 text-white  font-weight-bold font-italic text-warning ">
+            {{selecteduser.username}} Profile
+        </h1>
     </div>
 </br>
 
 
-<div class="float-right">
+<div class="float-right col-6">
     {% if userprofile.picture %}
 	<img src="{{ MEDIA_URL }}{{ userprofile.picture }}" width="300" height="300" alt="{{user.username}}" />
     {% else %}
@@ -21,7 +23,7 @@
 	<br/><br/>
 </div>
 
-
+<div class="col-6">
 	<div id="profile_data">
 		{% if selecteduser.username == user.username %}
     	<form method="post" action="." enctype="multipart/form-data">
@@ -35,9 +37,7 @@
                 </br>
                 <small style="color:grey">{{ field.help_text }}</small>
             {% endif %}
-            {% for error in field.errors %}
-                <p style="color:red">{{ error }}</p>
-            {% endfor %}
+            
         </p>
     {% endfor %}
     		<input class="btn btn-warning btn-md" type="submit" value="Update" />
@@ -49,11 +49,11 @@
 	</div>
 
 <div id="edit_profile"></div>
-
 	If you would like to add or remove movies from your favorites or watchlist,
 	just go to the movie page!
 </font>
 
 <br/>
+</div>
 
 {% endblock %}
