@@ -13,15 +13,15 @@ def populate():
     action_movies = [
         {"title": "Mission Impossible", "views": 32, "likes": 16, "content": "A classic action movie", "director":"Jack",
          "actor":"Lily", "img": "posters/MissionImpossibleFallout.jpg",
-         "netflix_link": "", "amazon_link": "", "preview": "",
+         "netflix_link": "https://www.netflix.com/title/70217912", "amazon_link": "", "preview": "",
          },
-        {"title": "Avengers: Infinity War", "views": 16, "likes": 32, "director":"Anthony Russo, Joe Russo",
-         "actor":"Robert Downey Jr., Chris Hemsworth, Mark Ruffalo, Chris Evans, Scarlett Johansson, Don Cheadle, Benedict Cumberbatch,Tom Holland",
-         "content": "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.",
-         "netflix_link": "", "amazon_link": "https://www.amazon.co.uk/dp/B07CLZKY26?ref_=imdbref_tt_wbr_aiv&tag=imdbtag_tt_wbr_aiv-21", "preview": "https://www.youtube.com/watch?v=6ZfuNTqbHE8","img": "posters/InfinityWar.jpg"
+        {"title": "The Fast and the Furious: Tokyo Drift", "views": 16, "likes": 32, "director":"Justin Lin",
+         "actor":"Lucas Black, Zachery Ty Bryan, Shad Moss",
+         "content": "A teenager becomes a major competitor in the world of drift racing after moving in with his father in Tokyo to avoid a jail sentence in America.",
+         "netflix_link": "", "amazon_link": "https://www.amazon.co.uk/dp/B00FZQWZUM?ref_=imdbref_tt_wbr_aiv&tag=imdbtag_tt_wbr_aiv-21", "preview": "","img": "posters/Fast&Furious.jpg"
          },
-         {"title": "Aquaman", "views": 32, "likes": 16, "content": "Arthur Curry, the human-born heir to the underwater kingdom of Atlantis, goes on a quest to prevent a war between the worlds of ocean and land.", 
-         "director":"James Wan", "actor":"Jason Momoa, Amber Heard, Willem Dafoe", "img": "posters/AquaMan.jpg",
+         {"title": "", "views": 32, "likes": 16, "content": "", 
+         "director":"", "actor":"", "img": "posters/.jpg",
          "netflix_link": "", "amazon_link": "", "preview": "",
          },
     ]
@@ -48,13 +48,64 @@ def populate():
          "content": "Fantastic Beasts and Where to Find Them is a prequel to the Harry Potter movies. "
          "Based on J.K. Rowling's original story, it takes place in 1920s New York City and follows "
          "Newt Scamander (Eddie Redmayne), a magizoologist and author of a Hogwarts textbook.",
-         "img": "posters/FantasticBeasts.jpg"}
+         "img": "posters/FantasticBeasts.jpg"},
+        {"title": "Miss Peregrine's Home for Peculiar Children", "likes": 20, "views": 10,
+         "netflix_link": "", "amazon_link": "https://www.amazon.co.uk/dp/B01LXO031H?ref_=imdbref_tt_wbr_aiv&tag=imdbtag_tt_wbr_aiv-21",
+         "preview": "", "director": "Tim Burton",
+         "actor": "E Eva Green, Asa Butterfield, Samuel L. Jackson ",
+         "content": "When Jacob discovers clues to a mystery that stretches across time, he finds Miss Peregrine's Home for Peculiar Children." 
+                     "But the danger deepens after he gets to know the residents and learns about their special powers.",
+         "img": "posters/MissPeregrine.jpg"},
+         {"title": "Snow White and the Huntsman", "views": 16, "likes": 32, "director":"Rupert Sanders",
+         "actor":" Kristen Stewart, Chris Hemsworth, Charlize Theron",
+         "content": "In a twist to the fairy tale, the Huntsman ordered to take Snow White into the woods to be killed winds up becoming her protector and mentor in a quest to vanquish the Evil Queen.",
+         "netflix_link": "", "amazon_link": "https://www.amazon.co.uk/dp/B07CLZKY26?ref_=imdbref_tt_wbr_aiv&tag=imdbtag_tt_wbr_aiv-21", "preview": "https://www.youtube.com/watch?v=6ZfuNTqbHE8",
+         "img": "posters/Snow.jpg"
+         },
         ]
+    
+    scifi_movies = [
+        {"title": "Thor: Ragnarok", "views": 32, "likes": 16,
+         "content": "Thor is imprisoned on the planet Sakaar, and must race against time to return to Asgard and stop Ragnarök," 
+                     "the destruction of his world, at the hands of the powerful and ruthless villain Hela.",
+         "netflix_link": "", "amazon_link": "https://www.amazon.co.uk/dp/B076MN9MBM?ref_=imdbref_tt_wbr_aiv&tag=imdbtag_tt_wbr_aiv-21", "preview": "",
+         "director":"Jack","actor": "Lily", "img": "posters/CrimesOfGrindelwald.jpg"},
+         {"title": "Avengers: Infinity War", "views": 16, "likes": 32, "director":"Anthony Russo, Joe Russo",
+         "actor":"Robert Downey Jr., Chris Hemsworth, Mark Ruffalo, Chris Evans, Scarlett Johansson, Don Cheadle, Benedict Cumberbatch,Tom Holland",
+         "content": "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos" 
+                     "before his blitz of devastation and ruin puts an end to the universe.",
+         "netflix_link": "", "amazon_link": "https://www.amazon.co.uk/dp/B07CLZKY26?ref_=imdbref_tt_wbr_aiv&tag=imdbtag_tt_wbr_aiv-21", 
+         "preview": "https://www.youtube.com/watch?v=6ZfuNTqbHE8","img": "posters/InfinityWar.jpg"},
+         {"title": "Aquaman", "views": 32, "likes": 16, 
+          "content": "Arthur Curry, the human-born heir to the underwater kingdom of Atlantis, goes on a quest to prevent a war between the worlds of ocean and land.", 
+         "director":"James Wan", "actor":"Jason Momoa, Amber Heard, Willem Dafoe", "img": "posters/AquaMan.jpg",
+         "netflix_link": "", "amazon_link": "", "preview": "",},
+        {"title": "", "likes": 15, "views": 10,
+         "netflix_link": "", "amazon_link": "",
+         "preview": "", "director": "",
+         "actor": "",
+         "content": "",
+         "img": "posters/.jpg"},
+        ]
+    
+    animation_movies = [
+        {"title": "Rango", "views": 32, "likes": 16,
+         "content": "Rango is an ordinary chameleon who accidentally winds up in the town of Dirt, a lawless outpost in the Wild West in desperate need of a new sheriff.",
+         "netflix_link": "", "amazon_link": "", "preview": "",
+         "director": " Gore Verbinski", "actor": "Johnny Depp, Isla Fisher, Timothy Olyphant", "img": "posters/Rango.jpg"},
+        {"title": "Spirited Away", "views": 30, "likes": 16, "director": "Hayao Miyazaki, Kirk Wise", "actor": "Daveigh Chase, Suzanne Pleshette, Miyu Irino",
+         "content": "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits, and where humans are changed into beasts.",
+         "netflix_link": "", "amazon_link": "", "preview": "", "img": "posters/SpiritedAway.jpg"}
+    ]
+
 
 
     cats = {"Action": {"movies": action_movies},
             "Drama": {"movies": drama_movies},
-            "Fantasy": {"movies": fantasy_movies}}
+            "Fantasy": {"movies": fantasy_movies},
+            "Sci-Fi": {"movies": scifi_movies},
+            "Animation": {"movies": animation_movies},
+            }
 
     for cat, cat_data in cats.items():
         c = add_cat(cat)
