@@ -19,12 +19,14 @@
             <img src="{{ MEDIA_URL }}{{movie.img }}" width="200" height="300" alt="{{movie.title}}">
         <div class="w-100 " id="preview"><a href="{{ movie.preview }}" class="w-100  font-weight-bold text-white">Watch Preview</a></div>
         <div class="w-100 " id="stream"><a class="w-100  font-weight-bold text-white" >Stream Online:</a></div>
+        <ul>
         {% if movie.netflix_link %}
-            <div class="w-100 " id="netflix"><a href="{{ movie.netflix_link }}" class="w-100  font-weight-bold text-white" ><img src="/static/images/netflix.png" style="height: 30px;width: 30px"></a></div>
+            <a id="netflix" href="{{ movie.netflix_link }}" class="w-100  font-weight-bold text-white" ><img src="/static/images/netflix.png" style="height: 30px;width: 30px"></a>
         {% endif %}
         {% if movie.amazon_link %}
-            <div class="w-100 " id="amazon"><a href="{{ movie.amazon_link }}" class="w-100  font-weight-bold text-white" ><img src="/static/images/Amazon.png" style="height: 30px;width: 30px"></a></div>
+            <a id="amazon" href="{{ movie.amazon_link }}" class="w-100  font-weight-bold text-white" ><img src="/static/images/Amazon.png" style="height: 30px;width: 30px"></a>
         {% endif %}
+        </ul>
         </div>    
         
         <div class="w-100 " id="stars">
@@ -70,7 +72,7 @@
         {% if show_watchlist_button %}
             <button id="watchlist" data-movieid="{{movie.id}}"
                 class="btn btn-warning btn-sm" type="button">
-               + Add to Watchlist
+               + Watchlist
             </button>
         {% endif %}
         {% endif %}
@@ -81,7 +83,7 @@
         {% if show_remove_watchlist_button %}
             <button id="remove_watchlist_button" data-movieid="{{movie.id}}"
                 class="btn btn-primary btn-sm" type="button">
-                Remove from Watchlist
+                - Watchlist
             </button>
         {% endif %}
         {% endif %}
