@@ -95,10 +95,10 @@
 <!--right column-->
 <!--movie description-->
     <div class="col-md-6">
-        <h3 href="" class="w-100  font-weight-bold text-muted " >Summary</h3>
+        <h3 href="" class="w-100  font-weight-bold text-white " >Summary</h3>
         <p  id="summary" class="w-100  font-weight-bold text-white ">{{ movie.content }}</p>
-        <p class="w-100 text-white">Directed by: {{ movie.director }}</p>
-        <h3  class=" font-weight-bold text-muted " >Casts </h3>
+        <p class="w-100 text-white">Directed by: <a class="font-weight-bold text-white ">{{ movie.director }}</a></p>
+        <h3  class=" font-weight-bold text-white " >Casts </h3>
         <p class="font-weight-bold text-white ">{{ movie.actor }}</p>
     </div>
 <!--end movie description-->
@@ -116,7 +116,7 @@
         <!--star rating-->
             <div id="rateYo"></div>
             <div>
-                <button id="getRating"  class="btn btn-primary btn-sm ">Sumit</button>
+                <button id="getRating"  class="btn btn-primary btn-sm ">Submit</button>
             </div>
 <!--star rating end-->
         

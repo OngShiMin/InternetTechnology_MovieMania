@@ -115,6 +115,18 @@ def populate():
          "content": "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits, and where humans are changed into beasts.",
          "netflix_link": "", "amazon_link": "", "preview": "", "img": "posters/SpiritedAway.jpg"}
     ]
+    
+    
+    comedy_movies = [
+        {"title": "Jumanji: Welcome to the Jungle", "views": 40, "likes": 23,
+         "content": "Four teenagers are sucked into a magical video game, and the only way they can escape is to work together to finish the game.",
+         "netflix_link": "", "amazon_link": "https://www.amazon.co.uk/dp/B07C36VWQZ?ref_=imdbref_tt_wbr_aiv&tag=imdbtag_tt_wbr_aiv-21", "preview": "",
+         "director": "Jake Kasdan", "actor": "Dwayne Johnson, Karen Gillan, Kevin Hart", "img": "posters/Jumanji.jpg"},
+         
+        {"title": "The Grand Budapest Hotel", "views": 30, "likes": 20, "director": "Wes Anderson", "actor": " Ralph Fiennes, F. Murray Abraham, Mathieu Amalric",
+         "content": "The adventures of Gustave H, a legendary concierge at a famous hotel from the fictional Republic of Zubrowka between the first and second World Wars, and Zero Moustafa, the lobby boy who becomes his most trusted friend.",
+         "netflix_link": "https://www.netflix.com/title/70295915", "amazon_link": "https://www.amazon.co.uk/dp/B00LBYDI6W?ref_=imdbref_tt_wbr_aiv&tag=imdbtag_tt_wbr_aiv-21", "preview": "", "img": "posters/Budapest.jpg"}
+    ]
 
 
 
@@ -123,6 +135,7 @@ def populate():
             "Fantasy": {"movies": fantasy_movies},
             "Sci-Fi": {"movies": scifi_movies},
             "Animation": {"movies": animation_movies},
+            "Comedy": {"movies": comedy_movies},
             }
 
     for cat, cat_data in cats.items():
