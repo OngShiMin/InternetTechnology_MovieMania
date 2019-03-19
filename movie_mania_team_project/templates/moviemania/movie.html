@@ -4,140 +4,130 @@
 {% load comments %}
 
 {% block body_block %}
-    <br />
-<!--This is the style of a movie-->
-<div class="row">
-    <div class="w-100" id="movietitle"><h2 href="" class="w-100 text-white font-weight-bold font-italic text-warning " >{{ movie.title }}</h2></div>
+<br />
+<div class="container">   
+<!--Movie Title-->
+    <div class="w-100" id="movietitle">
+        <h2 href="" class="w-100 text-white font-weight-bold font-italic text-warning " >
+            {{ movie.title }}
+        </h2>
+    </div>
 
-    <div class="w-25  ">
-        <img src="{{ MEDIA_URL }}{{movie.img }}" width="200" height="300" alt="{{movie.title}}">
-        
+<!--left column-->
+    <div class="row">
+        <div class="col-md-8">
+            <img src="{{ MEDIA_URL }}{{movie.img }}" width="200" height="300" alt="{{movie.title}}">
         <div class="w-100 " id="preview"><a href="{{ movie.preview }}" class="w-100  font-weight-bold text-white">Watch Preview</a></div>
-        <div class="w-100 " id="stream"><a href="#" class="w-100  font-weight-bold text-white" >Stream Online</a></div>
+        <div class="w-100 " id="stream"><a class="w-100  font-weight-bold text-white" >Stream Online:</a></div>
+        <ul>
         {% if movie.netflix_link %}
-            <div class="w-100 " id="netflix"><a href="{{ movie.netflix_link }}" class="w-100  font-weight-bold text-white" >Netflix</a></div>
+            <a id="netflix" href="{{ movie.netflix_link }}" class="w-100  font-weight-bold text-white" ><img src="/static/images/netflix.png" style="height: 30px;width: 30px"></a>
         {% endif %}
         {% if movie.amazon_link %}
-        <div class="w-100 " id="amazon"><a href="{{ movie.amazon_link }}" class="w-100  font-weight-bold text-white" >Amazon</a></div>
+            <a id="amazon" href="{{ movie.amazon_link }}" class="w-100  font-weight-bold text-white" ><img src="/static/images/Amazon.png" style="height: 30px;width: 30px"></a>
         {% endif %}
+        </ul>
+        </div>    
         
         <div class="w-100 " id="stars">
-    <!--need to edit-->
-        <i class='fas fa-star text-warning' style='font-size:16px'></i>
-        <i class='fas fa-star text-warning' style='font-size:16px'></i>
-        <i class='fas fa-star text-warning' style='font-size:16px'></i>
-        <i class='fas fa-star text-warning' style='font-size:16px'></i>
-        <i class='fas fa-star text-warning' style='font-size:16px'>5.0</i>
-        <p class="font-weight-bold text-white "> {% ratings movie %}</p>
+        <!--need to edit-->
+            <i class='fas fa-star text-warning' style='font-size:16px'></i>
+            <i class='fas fa-star text-warning' style='font-size:16px'></i>
+            <i class='fas fa-star text-warning' style='font-size:16px'></i>
+            <i class='fas fa-star text-warning' style='font-size:16px'></i>
+            <i class='fas fa-star text-warning' style='font-size:16px'>5.0</i>
+            <p class="font-weight-bold text-white "> {% ratings movie %}</p>
         </div>
     <br />
-<!-- Favorites and Watchlist buttons -->
-
-<!-- Add the movie to favourites -->
-<font color="White">
-<br />
-    <strong id="like_count">{{ movie.likes }}</strong> people have added this movie to their favourites
-    <br>
-    {% if user.is_authenticated %}
+    
+    <!-- Favorites and Watchlist buttons -->
+    <!-- Add the movie to favourites -->
+    <font color="White">
+    <br />
+        <h5>Favourits:  <strong id="like_count">{{ movie.likes }}</strong></h5>
+        {% if user.is_authenticated %}
         {% if show_like_button %}
-        <button id="likes" data-movieid="{{movie.id}}"
-                class="btn btn-danger btn-sm" type="button">
-                Add to Favourites
+            <button id="likes" data-movieid="{{movie.id}}"
+                class="btn btn-sm" type="button">
+                <img src="/static/images/like(1).png" style="height: 30px;width: 30px">
             </button>
         {% endif %}
-    {% endif %}
+        {% endif %}
 
     <!-- Remove the movie from favorites -->
-    <br />
-    {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
         {% if show_remove_favorites_button %}
-        <button id="remove_favorites_button" data-movieid="{{movie.id}}"
-                class="btn btn-primary btn-sm" type="button">
-                Remove from Favorites
+            <button id="remove_favorites_button" data-movieid="{{movie.id}}"
+                    class="btn btn-sm" type="button">
+                    <img src="/static/images/like.png" style="height: 30px;width: 30px">
             </button>
         {% endif %}
-    {% endif %}
-        <!-- Add the movie to watchlist -->
+        {% endif %}
+    <!-- Add the movie to watchlist -->
 <br />
 <br />
 
-    <strong id="watchlist_count">{{ movie.watchlistCount }}</strong> people have added this movie to their watchlist
-    <br>
-    {% if user.is_authenticated %}
+    <h5>Watchlist:  <strong id="watchlist_count">{{ movie.watchlistCount }}</strong></h5>
+        {% if user.is_authenticated %}
         {% if show_watchlist_button %}
-        <button id="watchlist" data-movieid="{{movie.id}}"
+            <button id="watchlist" data-movieid="{{movie.id}}"
                 class="btn btn-warning btn-sm" type="button">
-                Add to Watchlist
+               + Watchlist
             </button>
         {% endif %}
-    {% endif %}
+        {% endif %}
 
 
-<!-- Remove the movie from watchlist -->
-<br />
-    {% if user.is_authenticated %}
+    <!-- Remove the movie from watchlist -->
+        {% if user.is_authenticated %}
         {% if show_remove_watchlist_button %}
-        <button id="remove_watchlist_button" data-movieid="{{movie.id}}"
+            <button id="remove_watchlist_button" data-movieid="{{movie.id}}"
                 class="btn btn-primary btn-sm" type="button">
-                Remove from Watchlist
+                - Watchlist
             </button>
         {% endif %}
-    {% endif %}
+        {% endif %}
 </span>
 </font>
 
 <!-- end of favorites and watchlist buttons -->
+
+<!--right column-->
+<!--movie description-->
+    <div class="col-md-6">
+        <h3 href="" class="w-100  font-weight-bold text-muted " >Summary</h3>
+        <p  id="summary" class="w-100  font-weight-bold text-white ">{{ movie.content }}</p>
+        <p class="w-100 text-white">Directed by: {{ movie.director }}</p>
+        <h3  class=" font-weight-bold text-muted " >Casts </h3>
+        <p class="font-weight-bold text-white ">{{ movie.actor }}</p>
     </div>
-
-
-    <div class="w-70">
-        <div class="w-100" >
-            <h3 href="" class="w-100  font-weight-bold text-muted " >Summary</h3>
-            <div class="w=100" id="summary"><p class="w-100  font-weight-bold text-white ">{{ movie.content }}</p></div>
-        </div>
-        <div class="w-100">
-            <p class="w-100 text-white">Directed by: {{ movie.director }}</p>
-        </div>
-        <div class="w-100" >
-            <h3  class=" font-weight-bold text-muted " >Casts </h3>
-            <p class="font-weight-bold text-white ">{{ movie.actor }}</p>
-        </div>
-        <div class="w-100 form-group"  >
-            <!--comment count -->
-            {% get_comment_count for moviemania.movie title as comment_count%}
+<!--end movie description-->
+    
+    <div class="w-100 form-group"  >
+        <!--comment count -->
+        {% get_comment_count for moviemania.movie title as comment_count%}
         <!--comment form -->
             {% if user.is_authenticated %}
             {% render_comment_form for movie %}
             {% endif %}
             <p class="font-weight-bold text-muted">{{ comment_count }} comments have been posted.</p>
-            <!--<button id="comment-btn" onclick="loadComment()" class="btn btn-secondary " type="submit" value="Comment">Comment</button>-->
-            
+     </div>  
         
         <!--star rating-->
             <div id="rateYo"></div>
             <div>
-                <button id="getRating"  class="btn btn-secondary ">Submit</button>
+                <button id="getRating"  class="btn btn-primary btn-sm ">Sumit</button>
             </div>
-        </div>
 <!--star rating end-->
         
         <span class="w-100 bg-light border border-warning" style="width:100px;height: 50px" >
-            <i class='w-20 fas fa-user text-white' style='font-size:16px'> Username</i>
+            <i class="w-20 fas fa-user text-white" style="font-size:16px"> Username</i>
             <p class="w-100 text-white">Comment content</p>
         </span>
     </div>
 </div>
+</div>
 <!--movie style end-->
-
-
-
-
-
-
-
-
-
-
 
 <br />
 
