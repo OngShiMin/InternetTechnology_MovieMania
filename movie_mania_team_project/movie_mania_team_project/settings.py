@@ -47,6 +47,10 @@ INSTALLED_APPS = [
     'social_django',
     'django.contrib.sites',
     'django_comments',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
 ]
 # Comments
 SITE_ID =1
@@ -122,6 +126,7 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 
@@ -157,6 +162,7 @@ LOGIN_REDIRECT_URL = '/moviemania/'
 # The page users are directed to if they are not logged in,
 # and are trying to access pages requiring authentication
 LOGIN_URL = '/accounts/login/'
+LOGOUT_URl= '/moviemania/'
 
 SOCIAL_AUTH_TWITTER_KEY = 'shYcJgmtKTDed2AH4J0dVZ9B4'
 SOCIAL_AUTH_TWITTER_SECRET = 'ZyOtKkObRW8Pp7Qh781eV8m1UbC6DlLO9LQQaDLkSUYWEslG3g'

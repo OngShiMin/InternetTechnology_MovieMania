@@ -19,7 +19,6 @@ urlpatterns = [
     url(r'^watchlist_remove/$', views.remove_from_watchlist, name='remove_from_watchlist'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
-
 # =============================================================================
 #     url(r'^settings/$', core_views.settings, name='settings'),
 #     url(r'^settings/password/$', core_views.password, name='password'),
