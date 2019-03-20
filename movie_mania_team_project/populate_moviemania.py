@@ -36,8 +36,8 @@ def populate():
          "netflix_link": "", "amazon_link": "", "preview": "https://www.youtube.com/watch?v=mP0VHJYFOAU",
          "director": "Bryan Singer", "actor": "Rami Malek, Lucy Boynton, Gwilym Lee", "img": "posters/BohemianRhapsody.jpg"},
          
-        {"title": "Titanic", "views": 16, "likes": 16, "director": "Jack", "actor": "Lily",
-         "content": "Tragic love story set on the Titanic",
+        {"title": "Titanic", "views": 16, "likes": 16, "director": "James Cameron", "actor": "Leonardo DiCaprio, Kate Winslet",
+         "content": "An American epic romance and disaster film, telling the story of the sinking of the RMS Titanic",
          "netflix_link": "", "amazon_link": "https://www.amazon.co.uk/dp/B019HYDKBK?ref_=imdbref_tt_wbr_aiv&tag=imdbtag_tt_wbr_aiv-21",
          "preview": "", "img": "posters/Titanic.jpg"},
          
