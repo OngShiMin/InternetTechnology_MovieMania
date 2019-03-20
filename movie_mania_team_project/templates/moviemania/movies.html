@@ -3,9 +3,9 @@
 <ul>
     {% if movies %}
         {% for m in movies %}
-            <li><a href="/moviemania/category/{{ m.category.slug }}/{{ m.slug }}">{{ m.title }}</a></li>
+            <li style="color:white"><a href="/moviemania/category/{{ m.category.slug }}/{{ m.slug }}" style="color:white">{{ m.title }}</a></li>
         {% endfor %}
     {% else %}
-        <li><strong>There are no movies present</strong></li>
+        <li style="color:white"><strong>There are no movies present</strong></li>
     {% endif %}
 </ul>

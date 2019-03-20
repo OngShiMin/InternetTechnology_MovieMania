@@ -70,11 +70,11 @@
           <!--drop down navigation for categories-->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color:white;"s>Categories</a>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu text-white">
                 {% get_category_list %}
                 <ul>
                 {% for category in categories %}
-                    <a class="dropdown-item" href="/moviemania/category/{{ category.slug }}">{{ category.name }}</a>
+                    <a class="dropdown-item text-white" href="/moviemania/category/{{ category.slug }}">{{ category.name }}</a>
                 {% endfor %}
                 </ul>
             </div>
