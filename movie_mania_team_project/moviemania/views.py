@@ -23,6 +23,14 @@ def index(request):
     response = render(request, 'moviemania/index.html', context_dict)
     return response
 
+def get_suggestion_list(request):
+    category_list = Category.objects.order_by('-name')
+    movie_list = Movie.objects.order_by('-likes')[:10]
+
+    context_dict = {'categories': category_list, 'movies': movie_list}
+
+    response = render(request, 'moviemania/movie.html', context_dict)
+    return response
 
 def show_category(request, category_name_slug):
     # Create a context dictionary which we can pass
