@@ -54,14 +54,13 @@ class UserProfile(models.Model):
     # The additional attributes we wish to include
     website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
-    favorites = models.ManyToManyField(Movie, related_name="likes_movie", blank=True)
+    favorites = models.ManyToManyField(Movie, blank=True, related_name="likes_movie")
     watchlist = models.ManyToManyField('Movie', blank=True, related_name="watchlistCount_movie")
 
-
     # Override the __unicode__() method to return out something meaningful
+
     def __str__(self):
         return self.user.username
-
 
 
 class Comments(models.Model):
