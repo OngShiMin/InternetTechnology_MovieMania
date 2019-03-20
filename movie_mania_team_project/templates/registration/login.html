@@ -28,7 +28,7 @@
                              <div class="form-group ">
                             <div class="col-sm-6 col-md-6 "></div>
                             <div class="col-sm-2 col-md-2 ">
-                             <a class="nav-link text-muted" href="{% url 'auth_password_reset' %}">Forget Password?</a>
+                             <a class="nav-link text-white" href="{% url 'auth_password_reset' %}">Forget Password?</a>
                             </div>
                         </div>
                     </div>
@@ -40,13 +40,13 @@
         <input type="hidden" name="next" value="{{ next }}" />
     </form>
     </br>
-    <p class="text-muted">
+    <p class="text-white">
         Not a member yet?
         <a class="text-white" href=" {% url 'registration_register' %}">Register</a>
     </p>
     </br>
   
-    <p class="text-muted"><strong>-- OR --</strong></p>
+    <p class="text-white"><strong>-- OR --</strong></p>
   
     <ul>
     <a href="{% url 'social:begin' 'twitter' %}"><img src="/static/images/Twitter.png" style="height: 30px;width: 30px"></a>

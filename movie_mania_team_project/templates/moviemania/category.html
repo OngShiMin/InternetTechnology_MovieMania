@@ -2,17 +2,17 @@
 {% load staticfiles %}
 
 {% block title_block %}
-    {{ category.name }}
+<h2 href="" class="w-100 text-white text-center font-weight-bold font-italic text-warning " > {{ category.name }}</h2>
 {% endblock %}
 {% block body_block %}
 </br>
 </br>
     {% if category %}
-        <h1  class=" font-weight-bold text-white ">{{ category.name }}</h1>
+        <h1  class=" w-100 text-white text-center font-weight-bold font-italic text-warning ">{{ category.name }}</h1>
         {% if movies %}
             <ul>
                 {% for movie in movies %}
-                <a class="nav-link  text-white" href="/moviemania/category/{{ category.slug }}/{{ movie.slug }}">{{ movie.title }}</a><br/>
+                <a class="nav-link   font-weight-bold text-white" href="/moviemania/category/{{ category.slug }}/{{ movie.slug }}">{{ movie.title }}</a><br/>
                 {% endfor %}
              </ul>
         {% else %}
