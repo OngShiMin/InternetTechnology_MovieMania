@@ -36,12 +36,12 @@ def populate():
          "netflix_link": "", "amazon_link": "", "preview": "https://www.youtube.com/watch?v=mP0VHJYFOAU",
          "director": "Bryan Singer", "actor": "Rami Malek, Lucy Boynton, Gwilym Lee", "img": "posters/BohemianRhapsody.jpg"},
          
-        {"title": "Titanic", "views": 16, "likes": 16, "director": "Jack", "actor": "Lily",
-         "content": "Tragic love story set on the Titanic",
+        {"title": "Titanic", "views": 16, "likes": 16, "director": "James Cameron", "actor": "Leonardo DiCaprio, Kate Winslet",
+         "content": "An American epic romance and disaster film, telling the story of the sinking of the RMS Titanic",
          "netflix_link": "", "amazon_link": "https://www.amazon.co.uk/dp/B019HYDKBK?ref_=imdbref_tt_wbr_aiv&tag=imdbtag_tt_wbr_aiv-21",
          "preview": "", "img": "posters/Titanic.jpg"},
          
-        {"title": "12 Years a Slave", "views": 16, "likes": 16, "director": "Steve McQueen", "actor": " Chiwetel Ejiofor, Michael Kenneth Williams, Michael Fassbender",
+        {"title": "12 Years a Slave", "views": 16, "likes": 8, "director": "Steve McQueen", "actor": " Chiwetel Ejiofor, Michael Kenneth Williams, Michael Fassbender",
          "content": "In the antebellum United States, Solomon Northup, a free black man from upstate New York, "
          "is abducted and sold into slavery.",
          "netflix_link": "", "amazon_link": "https://www.amazon.co.uk/dp/B00J9G6320?ref_=imdbref_tt_wbr_aiv&tag=imdbtag_tt_wbr_aiv-21", 

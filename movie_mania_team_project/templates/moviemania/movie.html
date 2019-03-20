@@ -42,7 +42,7 @@
  <!-- Favorites and Watchlist buttons -->
  <!-- Add the movie to favourites -->
         <font color="White">
-        <h5>Favourits:  <strong id="like_count">{{ movie.likes }}</strong></h5>
+        <h5>Favourites:  <strong id="like_count">{{ movie.likes }}</strong></h5>
         {% if user.is_authenticated %}
         {% if show_like_button %}
             <button id="likes" data-movieid="{{movie.id}}"
@@ -154,33 +154,25 @@
 </div>
 <!--movie style end-->
 
-<!--Similar Searches concept-->
+<!--Similar Movies -->
 
-<h1 class="font-weight-bold text-white">Similar Searches</h1>
-</br>
+<h1 class="font-weight-bold text-white">Similar Movies</h1>
 
-    {% if movies %}
+    {% if similar_movies %}
         <div class="row">
 
-        {% for movie in movies %}
+        {% for movie in similar_movies %}
         <div class="col-md">
-
-            {% if movies %}
-                <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}""><img src="{{ MEDIA_URL }}{{movie.img}}" width="150" height="250" alt="{{movie.title}}"></a>
-            {% else %}
-                <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}"><img class="img-fluid" src="http://placehold.it/200x300" alt=""/></a>
-            {% endif %}
-
+            <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}""><img src="{{ MEDIA_URL }}{{movie.img}}" width="150" height="250" alt="{{movie.title}}">
+            <br/>
             <a class="text-white" href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}">{{ movie.title }}</a>
         </div>
-        {% endfor %}
+            {% endfor %}
 
-        {% else %}
+    {% else %}
             <strong>There are no movies present.</strong>
     {% endif %}
-        </div>
+
 </div>
 
-
 {% endblock %}
-

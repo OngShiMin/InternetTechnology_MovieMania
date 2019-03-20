@@ -23,14 +23,6 @@ def index(request):
     response = render(request, 'moviemania/index.html', context_dict)
     return response
 
-def get_suggestion_list(request):
-    category_list = Category.objects.order_by('-name')
-    movie_list = Movie.objects.order_by('-likes')[:10]
-
-    context_dict = {'categories': category_list, 'movies': movie_list}
-
-    response = render(request, 'moviemania/movie.html', context_dict)
-    return response
 
 def show_category(request, category_name_slug):
     # Create a context dictionary which we can pass
@@ -70,6 +62,10 @@ def show_movie(request, category_name_slug, movie_title_slug):
     try:
         movie = Movie.objects.get(slug=movie_title_slug)
         context_dict['movie'] = movie
+        this_title = movie.title
+        similar_movies = Movie.objects.filter(category=movie.category).exclude(title = this_title)
+        similar_movies.order_by('-likes')[:5]
+        context_dict['similar_movies'] = similar_movies
 
         if request.user.is_authenticated():
             profile = UserProfile.objects.get(user=request.user)
@@ -92,6 +88,7 @@ def show_movie(request, category_name_slug, movie_title_slug):
     except Movie.DoesNotExist:
         context_dict['movie'] = None
         context_dict['category'] = None
+        context_dict['movies'] = None
 
     return render(request, 'moviemania/movie.html', context_dict)
 
@@ -208,28 +205,6 @@ def get_movie_list(max_results=0, starts_with=''):
         if len(movie_list) > max_results:
             movie_list = movie_list[:max_results]
     return movie_list
-
-
-def get_director_list(max_results=0, starts_with=''):
-    director_list = []
-    if starts_with:
-        director_list = Movie.director.filter(title__istartswith=starts_with)
-
-    if max_results > 0:
-        if len(director_list) > max_results:
-            movie_list = director_list[:max_results]
-    return director_list
-
-
-def get_actor_list(max_results=0, starts_with=''):
-    actor_list = []
-    if starts_with:
-        actor_list = Movie.actor.filter(title__istartswith=starts_with)
-
-    if max_results > 0:
-        if len(actor_list) > max_results:
-            movie_list = actor_list[:max_results]
-    return actor_list
 
 
 def suggest_movie(request):
