@@ -107,7 +107,7 @@
     
     <div class="w-100 form-group"  >
         <!--comment count -->
-        {% get_comment_count for moviemania.movie title as comment_count%}
+        {% get_comment_count for moviemania.movie title as comment_count %}
         <!--comment form -->
             {% if user.is_authenticated %}
             {% render_comment_form for movie %}
