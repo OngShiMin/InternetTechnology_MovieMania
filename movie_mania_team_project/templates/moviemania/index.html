@@ -40,7 +40,7 @@ Index
         <div class="col-md">
 
             {% if movies %}
-                <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}""><img src="{{ MEDIA_URL }}{{movie.img}}" width="150" height="250" alt="{{movie.title}}"></a>
+                <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}"><img src="{{ MEDIA_URL }}{{movie.img}}" width="150" height="250" alt="{{movie.title}}"></a>
             {% else %}
                 <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}"><img class="img-fluid" src="http://placehold.it/200x300" alt=""/></a>
             {% endif %}
