@@ -1,8 +1,9 @@
 {% extends 'moviemania/base.html' %}
 {% load staticfiles %}
 
+
 {% block title_block %}
-<h2 href="" class="w-100 text-white text-center font-weight-bold font-italic text-warning " > {{ category.name }}</h2>
+<h2> {{ category.name }}</h2>
 {% endblock %}
 {% block body_block %}
 </br>
@@ -12,7 +13,11 @@
         {% if movies %}
             <ul>
                 {% for movie in movies %}
-                <a class="nav-link   font-weight-bold text-white" href="/moviemania/category/{{ category.slug }}/{{ movie.slug }}">{{ movie.title }}</a><br/>
+                <a class="nav-link   font-weight-bold text-white" href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}">
+                <img src="{{ MEDIA_URL }}{{movie.img}}" width="40" height="55" alt="{{movie.title}}">
+                {{ movie.title }}
+                </a>
+                <br/>
                 {% endfor %}
              </ul>
         {% else %}

@@ -51,21 +51,7 @@
             <br>
             <br>
             <br>
-            <!-- second set of stars
-            <ul class="star-ratings-rating-foreground" style="width: {{ percentage|floatformat }}%" white-space=nowrap>
-                {% for star in stars %}
-                    {% if editable %}
-                    <form action="{% url 'ratings:rate' rating.content_type_id rating.object_id %}" class="star-ratings-rate-action" method="post" style="float: left; padding: 0px">
-                        {% csrf_token %}
-                        <input type="hidden" value="{{ star }}" name="score">
-                        <input type="hidden" value="{{ request.path }}" name="next">
-                        <button type="submit" class="star-ratings-rating-full" data-score="{{ star }}"></button>
-                    </form>
-                    {% else %}
-                        <span class="star-ratings-rating-full" title="Log in to rate"></span>
-                    {% endif %}
-                {% endfor %}
-            </ul> -->
+            
         </div>
 
 
