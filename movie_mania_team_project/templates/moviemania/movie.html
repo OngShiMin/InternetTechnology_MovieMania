@@ -148,6 +148,32 @@
 </div>
 <!--movie style end-->
 
+<!--Similar Searches concept-->
+
+<h1 class="font-weight-bold text-white">Similar Searches</h1>
+</br>
+
+    {% if movies %}
+        <div class="row">
+
+        {% for movie in movies %}
+        <div class="col-md">
+
+            {% if movies %}
+                <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}""><img src="{{ MEDIA_URL }}{{movie.img}}" width="150" height="250" alt="{{movie.title}}"></a>
+            {% else %}
+                <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}"><img class="img-fluid" src="http://placehold.it/200x300" alt=""/></a>
+            {% endif %}
+
+            <a class="text-white" href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}">{{ movie.title }}</a>
+        </div>
+        {% endfor %}
+
+        {% else %}
+            <strong>There are no movies present.</strong>
+    {% endif %}
+        </div>
+</div>
 
 
 {% endblock %}
