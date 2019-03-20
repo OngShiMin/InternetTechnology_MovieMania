@@ -9,9 +9,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from moviemania.webhose_search import run_query
-# =============================================================================
-# from social_django.models import UserSocialAuth
-# =============================================================================
 
 
 def index(request):

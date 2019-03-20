@@ -154,16 +154,16 @@
 </div>
 <!--movie style end-->
 
+<br/>
 <!--Similar Movies -->
-
-<h1 class="font-weight-bold text-white">Similar Movies</h1>
+<h3 href="" class="w-100 text-white font-weight-bold font-italic text-warning " >Similar Movies</h3>
 
     {% if similar_movies %}
         <div class="row">
 
         {% for movie in similar_movies %}
         <div class="col-md">
-            <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}""><img src="{{ MEDIA_URL }}{{movie.img}}" width="150" height="250" alt="{{movie.title}}">
+            <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}""><img src="{{ MEDIA_URL }}{{movie.img}}" width="120" height="190" alt="{{movie.title}}">
             <br/>
             <a class="text-white" href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}">{{ movie.title }}</a>
         </div>
