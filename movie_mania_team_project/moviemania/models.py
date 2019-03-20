@@ -8,7 +8,6 @@ from django.template.defaultfilters import slugify
 #fs = FileSystemStorage(location='/media/posters')
 
 
-
 class Category(models.Model):
     name = models.CharField(max_length=128, unique=True)
     slug = models.SlugField(blank=True)
