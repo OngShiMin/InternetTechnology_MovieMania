@@ -61,3 +61,51 @@ class AdminTests(TestCase):
     def test_admin_interface_page_view(self):
         self.assertIn('category', PageAdmin.list_display)
         self.assertIn('url', PageAdmin.list_display)
+
+
+class PopulationTests(TestCase):
+    def setUp(self):
+        try:
+            from populate_moviemania import populate
+            populate()
+        except ImportError:
+            print('The module populate_rango does not exist')
+        except NameError:
+            print('The function populate() does not exist or is not correct')
+        except:
+            print('Something went wrong in the populate() function :-(')
+
+    def get_category(self, name):
+
+        from moviemania.models import Category
+        try:
+            cat = Category.objects.get(name=name)
+        except Category.DoesNotExist:
+            cat = None
+        return cat
+
+    def test_drama_cat_added(self):
+        cat = self.get_category('Drama')
+        self.assertIsNotNone(cat)
+
+    def get_movie(self, title):
+        from moviemania.models import Movie
+        try:
+            movie = Movie.objects.get(title=title)
+        except Movie.DoesNotExist:
+            movie = None
+        return movie
+
+    def test_titanic_movie_added(self):
+        movie = self.get_movie('Titanic')
+        self.assertIsNotNone(movie)
+
+    def test_titanic_director_added(self):
+        movie = self.get_movie('Titanic')
+        director = movie.director
+        self.assertIsNotNone(director)
+
+    def test_titanic_image_added(self):
+        movie = self.get_movie('Titanic')
+        image = movie.img
+        self.assertIsNotNone(image)
