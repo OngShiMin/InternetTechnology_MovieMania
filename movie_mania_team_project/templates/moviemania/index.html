@@ -16,12 +16,11 @@ Index
      <form class="nav-item container-fluid mt-5 ml-5" ><input class="search-query form-control width-50" placeholder="Search for a movie" type="text"
               name="suggestion" value="" id="suggestion" />
      </form>
-    </div>
-    <div class="col-2"></div>
-</div>
 <hr>
 
 <div id="movies">
+    </div>
+</div>
 </div>
 
 <!-- end search bar -->
@@ -41,7 +40,7 @@ Index
         <div class="col-md">
 
             {% if movies %}
-                <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}"><img src="{{ MEDIA_URL }}{{movie.img}}" width="150" height="250" alt="{{movie.title}}"></a>
+                <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}"><img src="{{ MEDIA_URL }}{{movie.img}}" width="160" height="250" alt="{{movie.title}}"></a>
             {% else %}
                 <a href="/moviemania/category/{{ movie.category.slug }}/{{movie.slug}}"><img class="img-fluid" src="http://placehold.it/200x300" alt=""/></a>
             {% endif %}

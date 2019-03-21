@@ -54,9 +54,6 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'profile' user.username %}">Profile</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'search' %}">Search</a>
-          </li>
           {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'auth_login' %}" style="color:white;">Log in</a>
@@ -64,29 +61,25 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'registration_register' %}" style="color:white;" >Sign up</a>
           </li>
-
           {% endif %}
+        <!--search-->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'search' %}">Search</a>
+          </li>
           
           <!--drop down navigation for categories-->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color:white;"s>Categories</a>
                 <div class="dropdown-menu text-white">
                 {% get_category_list %}
-                <ul>
                 {% for category in categories %}
-                    <a class="dropdown-item text-white" href="/moviemania/category/{{ category.slug }}">{{ category.name }}</a>
+                    <a class="dropdown-item" href="/moviemania/category/{{ category.slug }}"></a>
                 {% endfor %}
-                </ul>
             </div>
           </li>
         </ul>
         
-        <!--SEARCH BAR
-        <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        -->
+     
       </div>
     </nav>
 
