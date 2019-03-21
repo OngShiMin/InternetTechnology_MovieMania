@@ -76,7 +76,6 @@ class PopulationTests(TestCase):
             print('Something went wrong in the populate() function :-(')
 
     def get_category(self, name):
-
         from moviemania.models import Category
         try:
             cat = Category.objects.get(name=name)
