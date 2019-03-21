@@ -59,4 +59,3 @@ def run_query(search_terms, size=10):
 
     # Return the list of results to the calling function
     return results
-

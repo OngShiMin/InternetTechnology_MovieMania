@@ -36,6 +36,10 @@ class Movie(models.Model):
     def save(self, *args, **kwargs):
         self.category.slug = slugify(self.category.name)
         self.slug = slugify(self.title)
+        if self.views < 0:
+            self.views = 0
+        if self.likes < 0:
+            self.likes = 0
         super(Movie, self).save(*args, **kwargs)
 
     def __str__(self):
