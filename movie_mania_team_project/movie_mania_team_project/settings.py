@@ -29,7 +29,7 @@ SECRET_KEY = 'lx2nff6(4$7(n^2e@&bcvn6xlklvy=ud&su%$!^yfs0x^f83lp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://kathrinpanitz.pythonanywhere.com']
+ALLOWED_HOSTS = ['kathrinpanitz.pythonanywhere.com']
 
 
 # Application definition
