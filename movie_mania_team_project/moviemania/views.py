@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponse
 from moviemania.forms import UserForm, UserProfileForm
 from moviemania.models import Category, Movie, UserProfile
