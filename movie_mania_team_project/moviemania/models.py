@@ -64,8 +64,8 @@ class UserProfile(models.Model):
 class Comments(models.Model):
     comment_content = models.CharField(max_length=128)
     score = models.IntegerField()
-    movie = models.ForeignKey(Movie)
-    user = models.ForeignKey(User)    
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.comment_content
