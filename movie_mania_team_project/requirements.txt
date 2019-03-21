@@ -13,7 +13,7 @@ bcrypt==3.1.5
 beautifulsoup4==4.6.3
 bitarray==0.8.3
 bkcharts==0.2
-blaze==0.11.3
+blaze==0.8.0
 bleach==3.0.2
 bokeh==1.0.2
 boto==2.49.0
